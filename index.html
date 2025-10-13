@@ -123,6 +123,7 @@
             letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(255, 108, 0, 0.4);
             border: none;
+            cursor: pointer; /* Adicionado para botões de formulário */
         }
 
         .btn-cta:hover {
@@ -436,7 +437,7 @@
                     
                     <div class="hero-text">
                         <h1>Desenvolvimento Web <span>DE ALTO NÍVEL</span></h1>
-                        <p>Plataformas digitais sob medida para microempresas, startups e negócios. Transforme sua presença online em uma máquina de vendas com a **Mendev**.</p>
+                        <p>Plataformas digitais sob medida para microempresas, startups e negócios. Transforme sua presença online em uma máquina de vendas com a Mendev.</p>
                         
                         <div style="margin-top: 3rem;">
                             <a href="#diferenciais" class="btn-cta" style="background: var(--secundaria-fundo); color: var(--texto-claro); box-shadow: none;">Descubra Nossas Soluções</a>
@@ -445,7 +446,7 @@
 
                     <div class="hero-form-wrapper">
                         <h3>Solicite sua Proposta Rápida!</h3>
-                        <form action="https://formspree.io/f/mrbyopar" method="POST" class="form-contato">
+                        <form id="heroForm" class="form-contato">
                             <input type="text" name="Nome_Hero" placeholder="Seu Nome Completo" required>
                             <input type="text" name="Empresa_Hero" placeholder="Nome da Empresa/Negócio" required>
                             <input type="email" name="Email_Hero" placeholder="Seu Melhor E-mail" required>
@@ -488,7 +489,7 @@
                 <a href="#contato" class="btn-cta" style="margin-top: 3rem;">Ver Todos os Casos de Sucesso</a>
             </div>
         </section>
-<section id="diferenciais">
+        <section id="diferenciais">
             <div class="container">
                 <h2>Diferenciais que Impulsionam o Seu Negócio</h2>
                 <p>Nossa entrega vai além do código: garantimos que seu site seja uma ferramenta estratégica de crescimento.</p>
@@ -516,7 +517,7 @@
                 </div>
             </div>
         </section>
-<section id="contato" style="background-color: var(--fundo-card);">
+        <section id="contato" style="background-color: var(--fundo-card);">
             <div class="container" style="max-width: 800px;">
                 <h2>Ainda tem Dúvidas? Fale Conosco</h2>
                 <p>Se preferir, envie uma mensagem mais detalhada sobre seu projeto e entraremos em contato.</p>
@@ -531,7 +532,7 @@
             </div>
         </section>
     </main>
-<footer>
+    <footer>
         <div class="container">
             <p>Mendev - Seu Parceiro em Desenvolvimento Web de Alta Performance.</p>
             <p>&copy; 2025 Mendev | <a href="#hero">Sites Profissionais</a>. Todos os direitos reservados.</p>
@@ -544,7 +545,60 @@
     </a>
 
     <script>
-        // Não é necessário JS extra, o Formspree cuida do envio.
+        document.getElementById('heroForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const formspreeUrl = "https://formspree.io/f/mrbyopar"; // *** SUBSTITUA PELO SEU ENDPOINT FORMREE AQUI ***
+
+            // 1. Enviar os dados via Formspree (e-mail)
+            fetch(formspreeUrl, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Formulário enviado com sucesso para o Formspree.");
+
+                    // 2. Abrir o WhatsApp após a tentativa de envio do email
+                    // Se você usou o campo WhatsApp_Hero, você pode até pegar o nome do cliente:
+                    const nome = formData.get('Nome_Hero') || 'Cliente';
+                    const numeroWhatsapp = '5571992546082'; // *** SUBSTITUA PELO SEU NÚMERO DE WHATSAPP AQUI ***
+                    
+                    const mensagem = encodeURIComponent(`Olá, sou o(a) ${nome} e gostaria de solicitar uma proposta grátis. Meu contato é: Nome: ${nome}, E-mail: ${formData.get('Email_Hero')}. Por favor, podemos conversar sobre o meu projeto?`);
+                    
+                    const whatsappUrl = `https://wa.me/${numeroWhatsapp}?text=${mensagem}`;
+
+                    window.open(whatsappUrl, '_blank');
+
+                    // Opcional: Limpar o formulário ou dar um feedback visual
+                    form.reset(); 
+                    alert("Sua solicitação foi enviada! Abrindo o WhatsApp para continuarmos a conversa...");
+
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Ocorreu um erro ao enviar a proposta. Por favor, tente o WhatsApp diretamente.");
+                            // Mesmo que falhe, ainda podemos tentar abrir o WhatsApp
+                             window.open(`https://wa.me/5571992546082?text=Tive%20problemas%20ao%20enviar%20a%20proposta%20pelo%20site.`, '_blank');
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Erro no envio do formulário:", error);
+                alert("Ocorreu um erro de conexão. Por favor, tente o WhatsApp diretamente.");
+                // Caso ocorra um erro na conexão, ainda abre o WhatsApp
+                window.open(`https://wa.me/5571992546082?text=Tive%20problemas%20ao%20enviar%20a%20proposta%20pelo%20site.`, '_blank');
+
+            });
+        });
     </script>
 </body>
 </html>
