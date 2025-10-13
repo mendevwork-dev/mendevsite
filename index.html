@@ -10,16 +10,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* Variáveis de Cor (Inspiração isEazy: Roxo/Azul e Destaque Laranja) */
+        /* ======================================================================= */
+        /* === NOVAS VARIÁVEIS DE COR: AZUL COBALTO / AMARELO ELÉTRICO / CIANO === */
+        /* ======================================================================= */
         :root {
-            --primaria-fundo: #4A148C; /* Roxo Escuro Principal */
-            --secundaria-fundo: #1565C0; /* Azul Escuro para Gradiente */
-            --texto-principal: #333333;
-            --texto-claro: #f4f4f4;
-            --cta-primaria: #FF6C00; /* Laranja Vibrante - Alto Destaque */
-            --cta-hover: #FF8E40;
+            --primaria-fundo: #1A004B; /* Azul Cobalto Profundo - Fundo principal escuro */
+            --secundaria-fundo: #000040; /* Azul Escuro Intenso - Para gradientes e elementos escuros complementares */
+            --texto-principal: #333333; /* Mantém para texto em seções claras */
+            --texto-claro: #f4f4f4; /* Texto em fundos escuros */
+            --cta-primaria: #FFE600; /* AMARELO ELÉTRICO / NEON - Destaque Principal (Botões CTA) */
+            --cta-hover: #FFD700; /* Amarelo um pouco mais escuro para o hover */
+            --cta-secundaria: #00FFFF; /* CIANO ELÉTRICO / AQUA - Destaque Secundário (Tags, etc.) */
             --fundo-card: #ffffff; /* Fundo do formulário/cards */
             --sombra-card: rgba(0, 0, 0, 0.2);
+            --sombra-cta: rgba(255, 230, 0, 0.6); /* Sombra mais vibrante para o CTA amarelo */
         }
 
         /* Reset e Base */
@@ -50,7 +54,6 @@
 
         /* Header e Navegação */
         header {
-            /* Fundo igual ao Gradiente da seção Hero */
             background: linear-gradient(90deg, var(--primaria-fundo) 0%, var(--secundaria-fundo) 100%);
             position: sticky;
             width: 100%;
@@ -69,11 +72,11 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--texto-claro); /* Logo em Branco */
+            color: var(--texto-claro);
             text-decoration: none;
         }
         .logo span {
-            color: var(--cta-primaria); /* Destaque Laranja */
+            color: var(--cta-primaria); /* Destaque Amarelo Elétrico */
             font-weight: 800;
         }
 
@@ -98,7 +101,7 @@
         /* Botão CTA no Header (Destacado) */
         .btn-header-cta {
             background: var(--cta-primaria);
-            color: var(--fundo-card);
+            color: var(--primaria-fundo); /* Texto escuro para contraste */
             padding: 0.7rem 1.5rem;
             border-radius: 4px;
             font-weight: 700;
@@ -106,14 +109,14 @@
         }
         .btn-header-cta:hover {
             background: var(--cta-hover);
-            color: var(--fundo-card);
+            color: var(--primaria-fundo);
         }
 
         /* Botão Principal de CTA */
         .btn-cta {
             display: inline-block;
-            background: var(--cta-primaria);
-            color: var(--fundo-card);
+            background: var(--cta-primaria); /* Amarelo Elétrico */
+            color: var(--primaria-fundo); /* Texto Azul Cobalto Escuro */
             padding: 0.9rem 2.2rem;
             border-radius: 8px;
             font-weight: 700;
@@ -121,15 +124,15 @@
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(255, 108, 0, 0.4);
+            box-shadow: 0 4px 15px var(--sombra-cta); /* Sombra mais vibrante */
             border: none;
-            cursor: pointer; /* Adicionado para botões de formulário */
+            cursor: pointer;
         }
 
         .btn-cta:hover {
             background: var(--cta-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 108, 0, 0.6);
+            box-shadow: 0 6px 20px var(--sombra-cta);
         }
 
         /* Seções Gerais */
@@ -141,13 +144,13 @@
         h1 {
             font-size: 3.8rem;
             margin-bottom: 1rem;
-            color: var(--texto-claro); /* Título na cor clara */
+            color: var(--texto-claro);
             font-weight: 800;
             text-align: left;
         }
-        /* Destaque no H1 (similar ao isEazy) */
+        /* Destaque no H1 */
         #hero h1 span {
-            color: var(--cta-primaria);
+            color: var(--cta-primaria); /* Amarelo Elétrico */
             display: block;
             font-size: 3.5rem;
         }
@@ -155,7 +158,7 @@
         h2 {
             font-size: 2.5rem;
             margin-bottom: 2.5rem;
-            color: var(--primaria-fundo);
+            color: var(--primaria-fundo); /* Azul Cobalto Profundo */
             font-weight: 700;
             position: relative;
         }
@@ -168,7 +171,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--cta-primaria);
+            background: var(--cta-primaria); /* Amarelo Elétrico */
             border-radius: 4px;
         }
 
@@ -179,12 +182,12 @@
             color: var(--texto-principal);
         }
 
-        /* Seção Hero - Estilo isEazy com Formulário ao lado */
+        /* Seção Hero - Fundo Escuro com Gradiente */
         #hero {
             min-height: 90vh;
             padding-top: 5rem;
             padding-bottom: 3rem;
-            /* Gradiente Roxo/Azul, igual ao site de inspiração */
+            /* Gradiente Azul Cobalto Profundo para Azul Escuro Intenso */
             background: linear-gradient(135deg, var(--primaria-fundo) 0%, var(--secundaria-fundo) 100%);
             color: var(--texto-claro);
             text-align: left;
@@ -213,7 +216,7 @@
             padding: 2.5rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            width: 400px; /* Largura fixa do formulário */
+            width: 400px;
             flex-shrink: 0;
         }
         .hero-form-wrapper h3 {
@@ -235,8 +238,8 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .form-contato input:focus, .form-contato textarea:focus {
-            border-color: var(--cta-primaria);
-            box-shadow: 0 0 0 3px rgba(255, 108, 0, 0.2);
+            border-color: var(--cta-primaria); /* Amarelo Elétrico no foco */
+            box-shadow: 0 0 0 3px rgba(255, 230, 0, 0.3);
             outline: none;
         }
         .form-contato button {
@@ -261,8 +264,8 @@
             width: 350px;
             text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 5px solid var(--cta-primaria); /* Destaque */
-            overflow: hidden; /* Garante que a imagem com zoom não saia da borda do card */
+            border-top: 5px solid var(--cta-secundaria); /* Ciano Elétrico para a borda do card */
+            overflow: hidden;
         }
 
         .modelo-card:hover {
@@ -276,12 +279,11 @@
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 1rem;
-            transition: transform 0.3s ease-in-out; /* NOVO: Transição suave para o zoom */
+            transition: transform 0.3s ease-in-out;
         }
 
-        /* NOVO: Efeito de Zoom na Imagem ao passar o mouse no card */
         .modelo-card:hover img {
-            transform: scale(1.05); /* Aumenta o tamanho em 5% */
+            transform: scale(1.05);
         }
 
         .modelo-card h3 {
@@ -292,8 +294,8 @@
 
         .tag {
             display: inline-block;
-            background: var(--secundaria-fundo); /* Azul/Roxo para as tags */
-            color: var(--texto-claro);
+            background: var(--cta-secundaria); /* Ciano Elétrico para as tags */
+            color: var(--primaria-fundo); /* Texto Azul Cobalto Escuro */
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -301,9 +303,9 @@
             margin-top: 0.5rem;
         }
 
-        /* Seção de Diferenciais (Agora em fundo claro, para contraste) */
+        /* Seção de Diferenciais (Fundo Claro) */
         #diferenciais {
-             background-color: #f7f9fc; /* Fundo suave */
+             background-color: #f7f9fc;
         }
         .beneficios-grid {
             display: grid;
@@ -326,9 +328,9 @@
 
         .beneficio-item i {
             font-size: 2.5rem;
-            color: var(--cta-primaria);
+            color: var(--cta-primaria); /* Amarelo Elétrico */
             margin-bottom: 1rem;
-            background: #fff0e6;
+            background: rgba(255, 230, 0, 0.1); /* Fundo suave para o ícone */
             padding: 15px;
             border-radius: 50%;
         }
@@ -339,9 +341,9 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Rodapé (Com fundo escuro para fechar o design) */
+        /* Rodapé */
         footer {
-            background-color: var(--primaria-fundo);
+            background-color: var(--primaria-fundo); /* Azul Cobalto Profundo */
             color: var(--texto-claro);
             padding: 3rem 0;
             text-align: center;
@@ -353,17 +355,16 @@
             font-size: 0.9rem;
         }
         footer a {
-            color: var(--cta-primaria);
+            color: var(--cta-primaria); /* Amarelo Elétrico */
             text-decoration: none;
         }
-
 
         /* Botão Flutuante de WhatsApp */
         #whatsapp-flutuante {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #25D366; 
+            background-color: #25D366; /* Verde original do WhatsApp */
             color: white;
             width: 60px;
             height: 60px;
@@ -380,7 +381,7 @@
             transform: scale(1.1);
         }
 
-        /* Responsividade (Ajuste principal: Formulário Hero para baixo) */
+        /* Responsividade */
         @media (max-width: 1050px) {
             .hero-content {
                 flex-direction: column;
@@ -388,7 +389,7 @@
             }
             .hero-text {
                 max-width: 100%;
-                order: 2; /* Move o texto para baixo para visualização em mobile */
+                order: 2;
             }
             .hero-text h1, .hero-text p {
                  text-align: center;
@@ -397,7 +398,7 @@
                 width: 100%;
                 max-width: 450px;
                 margin-top: 3rem;
-                order: 1; /* Move o formulário para o topo */
+                order: 1;
             }
             #hero h1 { font-size: 3rem; }
             #hero h1 span { font-size: 2.5rem; }
@@ -409,7 +410,6 @@
         @media (max-width: 600px) {
             #hero h1 { font-size: 2.5rem; }
             #hero h1 span { font-size: 2rem; }
-            /* Oculta o menu no mobile, mantendo apenas o CTA */
             nav ul li:not(:last-child) { display: none; }
             nav { justify-content: space-between; }
         }
@@ -440,7 +440,7 @@
                         <p>Plataformas digitais sob medida para microempresas, startups e negócios. Transforme sua presença online em uma máquina de vendas com a Mendev.</p>
                         
                         <div style="margin-top: 3rem;">
-                            <a href="#diferenciais" class="btn-cta" style="background: var(--secundaria-fundo); color: var(--texto-claro); box-shadow: none;">Descubra Nossas Soluções</a>
+                            <a href="#diferenciais" class="btn-cta" style="background: var(--cta-secundaria); color: var(--primaria-fundo); box-shadow: none;">Descubra Nossas Soluções</a>
                         </div>
                     </div>
 
@@ -565,7 +565,6 @@
                     console.log("Formulário enviado com sucesso para o Formspree.");
 
                     // 2. Abrir o WhatsApp após a tentativa de envio do email
-                    // Se você usou o campo WhatsApp_Hero, você pode até pegar o nome do cliente:
                     const nome = formData.get('Nome_Hero') || 'Cliente';
                     const numeroWhatsapp = '5571992546082'; // *** SUBSTITUA PELO SEU NÚMERO DE WHATSAPP AQUI ***
                     
@@ -585,8 +584,7 @@
                             alert(data["errors"].map(error => error["message"]).join(", "));
                         } else {
                             alert("Ocorreu um erro ao enviar a proposta. Por favor, tente o WhatsApp diretamente.");
-                            // Mesmo que falhe, ainda podemos tentar abrir o WhatsApp
-                             window.open(`https://wa.me/5571992546082?text=Tive%20problemas%20ao%20enviar%20a%20proposta%20pelo%20site.`, '_blank');
+                            window.open(`https://wa.me/5571992546082?text=Tive%20problemas%20ao%20enviar%20a%20proposta%20pelo%20site.`, '_blank');
                         }
                     });
                 }
@@ -594,7 +592,6 @@
             .catch(error => {
                 console.error("Erro no envio do formulário:", error);
                 alert("Ocorreu um erro de conexão. Por favor, tente o WhatsApp diretamente.");
-                // Caso ocorra um erro na conexão, ainda abre o WhatsApp
                 window.open(`https://wa.me/5571992546082?text=Tive%20problemas%20ao%20enviar%20a%20proposta%20pelo%20site.`, '_blank');
 
             });
