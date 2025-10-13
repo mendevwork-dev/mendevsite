@@ -69,15 +69,23 @@
             justify-content: space-between;
         }
 
-        .logo {
+        /* NOVO: Estilo da Logomarca (Header e Footer) */
+        .logo-mendev {
+            display: flex; /* Para alinhar o ícone e o texto */
+            align-items: center;
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--texto-claro);
             text-decoration: none;
+            gap: 0.5rem; /* Espaçamento entre o ícone e o nome */
         }
-        .logo span {
-            color: var(--cta-primaria); /* Destaque Amarelo Elétrico */
-            font-weight: 800;
+        .logo-icon {
+            color: var(--cta-secundaria); /* Ciano Elétrico para o ícone */
+            font-size: 2.2rem;
+            line-height: 1; /* Alinhamento vertical */
+        }
+        .logo-text {
+            color: var(--texto-claro);
         }
 
         nav ul {
@@ -420,7 +428,10 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#hero" class="logo">Mende<span>v</span></a>
+                <a href="#hero" class="logo-mendev">
+                    <span class="logo-icon">&lt;M</span> 
+                    <span class="logo-text">Mendev</span>
+                </a>
                 <ul>
                     <li><a href="#modelos">Portfólio</a></li>
                     <li><a href="#diferenciais">Serviços</a></li>
@@ -534,6 +545,10 @@
     </main>
     <footer>
         <div class="container">
+            <a href="#hero" class="logo-mendev" style="color: var(--texto-claro); margin-bottom: 1rem; justify-content: center;">
+                <span class="logo-icon">&lt;M</span> 
+                <span class="logo-text">Mendev</span>
+            </a>
             <p>Mendev - Seu Parceiro em Desenvolvimento Web de Alta Performance.</p>
             <p>&copy; 2025 Mendev | <a href="#hero">Sites Profissionais</a>. Todos os direitos reservados.</p>
         </div>
