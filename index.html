@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mendev | O Seu Software Web para Sites Profissionais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* Variáveis de Cor (Inspiração isEazy: Roxo/Azul e Destaque Laranja) */
+        :root {
+            --primaria-fundo: #4A148C; /* Roxo Escuro Principal */
+            --secundaria-fundo: #1565C0; /* Azul Escuro para Gradiente */
+            --texto-principal: #333333;
+            --texto-claro: #f4f4f4;
+            --cta-primaria: #FF6C00; /* Laranja Vibrante - Alto Destaque */
+            --cta-hover: #FF8E40;
+            --fundo-card: #ffffff; /* Fundo do formulário/cards */
+            --sombra-card: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--fundo-card);
+            color: var(--texto-principal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        /* Header e Navegação */
+        header {
+            /* Fundo igual ao Gradiente da seção Hero */
+            background: linear-gradient(90deg, var(--primaria-fundo) 0%, var(--secundaria-fundo) 100%);
+            position: sticky;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--sombra-card);
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--texto-claro); /* Logo em Branco */
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--cta-primaria); /* Destaque Laranja */
+            font-weight: 800;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--texto-claro);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cta-primaria);
+        }
+        
+        /* Botão CTA no Header (Destacado) */
+        .btn-header-cta {
+            background: var(--cta-primaria);
+            color: var(--fundo-card);
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+        .btn-header-cta:hover {
+            background: var(--cta-hover);
+            color: var(--fundo-card);
+        }
+
+        /* Botão Principal de CTA */
+        .btn-cta {
+            display: inline-block;
+            background: var(--cta-primaria);
+            color: var(--fundo-card);
+            padding: 0.9rem 2.2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(255, 108, 0, 0.4);
+            border: none;
+        }
+
+        .btn-cta:hover {
+            background: var(--cta-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 108, 0, 0.6);
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            color: var(--texto-claro); /* Título na cor clara */
+            font-weight: 800;
+            text-align: left;
+        }
+        /* Destaque no H1 (similar ao isEazy) */
+        #hero h1 span {
+            color: var(--cta-primaria);
+            display: block;
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--primaria-fundo);
+            font-weight: 700;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--cta-primaria);
+            border-radius: 4px;
+        }
+
+        p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+            font-size: 1.1rem;
+            color: var(--texto-principal);
+        }
+
+        /* Seção Hero - Estilo isEazy com Formulário ao lado */
+        #hero {
+            min-height: 90vh;
+            padding-top: 5rem;
+            padding-bottom: 3rem;
+            /* Gradiente Roxo/Azul, igual ao site de inspiração */
+            background: linear-gradient(135deg, var(--primaria-fundo) 0%, var(--secundaria-fundo) 100%);
+            color: var(--texto-claro);
+            text-align: left;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 60%;
+        }
+
+        .hero-text p {
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0 0 2rem 0;
+            max-width: 100%;
+        }
+
+        .hero-form-wrapper {
+            background: var(--fundo-card);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 400px; /* Largura fixa do formulário */
+            flex-shrink: 0;
+        }
+        .hero-form-wrapper h3 {
+            color: var(--primaria-fundo);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Estilo do Formulário */
+        .form-contato input, .form-contato textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-contato input:focus, .form-contato textarea:focus {
+            border-color: var(--cta-primaria);
+            box-shadow: 0 0 0 3px rgba(255, 108, 0, 0.2);
+            outline: none;
+        }
+        .form-contato button {
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+
+        /* Cards de Modelo (Portfólio) */
+        .modelos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .modelo-card {
+            background: var(--fundo-card);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            width: 350px;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--cta-primaria); /* Destaque */
+            overflow: hidden; /* Garante que a imagem com zoom não saia da borda do card */
+        }
+
+        .modelo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .modelo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease-in-out; /* NOVO: Transição suave para o zoom */
+        }
+
+        /* NOVO: Efeito de Zoom na Imagem ao passar o mouse no card */
+        .modelo-card:hover img {
+            transform: scale(1.05); /* Aumenta o tamanho em 5% */
+        }
+
+        .modelo-card h3 {
+            color: var(--primaria-fundo);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--secundaria-fundo); /* Azul/Roxo para as tags */
+            color: var(--texto-claro);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Seção de Diferenciais (Agora em fundo claro, para contraste) */
+        #diferenciais {
+             background-color: #f7f9fc; /* Fundo suave */
+        }
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .beneficio-item {
+            background: var(--fundo-card);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        .beneficio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .beneficio-item i {
+            font-size: 2.5rem;
+            color: var(--cta-primaria);
+            margin-bottom: 1rem;
+            background: #fff0e6;
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .beneficio-item h3 {
+            font-size: 1.2rem;
+            color: var(--primaria-fundo);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Rodapé (Com fundo escuro para fechar o design) */
+        footer {
+            background-color: var(--primaria-fundo);
+            color: var(--texto-claro);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: var(--cta-primaria);
+            text-decoration: none;
+        }
+
+
+        /* Botão Flutuante de WhatsApp */
+        #whatsapp-flutuante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366; 
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        #whatsapp-flutuante:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsividade (Ajuste principal: Formulário Hero para baixo) */
+        @media (max-width: 1050px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                max-width: 100%;
+                order: 2; /* Move o texto para baixo para visualização em mobile */
+            }
+            .hero-text h1, .hero-text p {
+                 text-align: center;
+            }
+            .hero-form-wrapper {
+                width: 100%;
+                max-width: 450px;
+                margin-top: 3rem;
+                order: 1; /* Move o formulário para o topo */
+            }
+            #hero h1 { font-size: 3rem; }
+            #hero h1 span { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            nav ul { gap: 1rem; }
+            .btn-header-cta { padding: 0.5rem 1rem; }
+        }
+        
+        @media (max-width: 600px) {
+            #hero h1 { font-size: 2.5rem; }
+            #hero h1 span { font-size: 2rem; }
+            /* Oculta o menu no mobile, mantendo apenas o CTA */
+            nav ul li:not(:last-child) { display: none; }
+            nav { justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#hero" class="logo">Mende<span>v</span></a>
+                <ul>
+                    <li><a href="#modelos">Portfólio</a></li>
+                    <li><a href="#diferenciais">Serviços</a></li>
+                    <li><a href="#contato" class="btn-header-cta">Fale Conosco</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    
+                    <div class="hero-text">
+                        <h1>Desenvolvimento Web <span>DE ALTO NÍVEL</span></h1>
+                        <p>Plataformas digitais sob medida para microempresas, startups e negócios. Transforme sua presença online em uma máquina de vendas com a **Mendev**.</p>
+                        
+                        <div style="margin-top: 3rem;">
+                            <a href="#diferenciais" class="btn-cta" style="background: var(--secundaria-fundo); color: var(--texto-claro); box-shadow: none;">Descubra Nossas Soluções</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-form-wrapper">
+                        <h3>Solicite sua Proposta Rápida!</h3>
+                        <form action="https://formspree.io/f/mrbyopar" method="POST" class="form-contato">
+                            <input type="text" name="Nome_Hero" placeholder="Seu Nome Completo" required>
+                            <input type="text" name="Empresa_Hero" placeholder="Nome da Empresa/Negócio" required>
+                            <input type="email" name="Email_Hero" placeholder="Seu Melhor E-mail" required>
+                            <input type="text" name="WhatsApp_Hero" placeholder="WhatsApp (DDD + Número)" required>
+                            <button type="submit" class="btn-cta" style="width: 100%;">Solicitar Proposta Grátis</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="modelos">
+            <div class="container">
+                <h2>Portfólio & Nossos Tipos de Projetos</h2>
+                <p>Veja as soluções que entregamos e encontre o projeto ideal para a sua necessidade de negócio.</p>
+
+                <div class="modelos-grid">
+                    <div class="modelo-card">
+                        <img src="site-institucional.jpeg" alt="Site Institucional">
+                        <h3>Sites Institucionais</h3>
+                        <p>Otimizado para autoridade e credibilidade, ideal para empresas que buscam consolidar sua marca.</p>
+                        <span class="tag">Mais Vistos</span>
+                    </div>
+                    
+                    <div class="modelo-card">
+                        <img src="loja-virtual.jpg" alt="Loja Virtual">
+                        <h3>Lojas Virtuais (E-commerce)</h3>
+                        <p>Desenvolvimento completo de e-commerce com foco em experiência do usuário e alta taxa de checkout.</p>
+                        <span class="tag">Vendas 24/7</span>
+                    </div>
+
+                    <div class="modelo-card">
+                        <img src="landing-page.jpg" alt="Landing Page">
+                        <h3>Landing Pages de Vendas</h3>
+                        <p>Páginas de conversão rápidas para campanhas de marketing, garantindo o melhor ROI em seus anúncios.</p>
+                        <span class="tag">Tráfego Pago</span>
+                    </div>
+                </div>
+                <a href="#contato" class="btn-cta" style="margin-top: 3rem;">Ver Todos os Casos de Sucesso</a>
+            </div>
+        </section>
+<section id="diferenciais">
+            <div class="container">
+                <h2>Diferenciais que Impulsionam o Seu Negócio</h2>
+                <p>Nossa entrega vai além do código: garantimos que seu site seja uma ferramenta estratégica de crescimento.</p>
+                <div class="beneficios-grid">
+                    <div class="beneficio-item">
+                        <i class="fa-solid fa-rocket"></i>
+                        <h3>Performance de Carregamento</h3>
+                        <p>Seu site será otimizado para a velocidade máxima, fator crucial para SEO e retenção de visitantes.</p>
+                    </div>
+                    <div class="beneficio-item">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        <h3>SEO Estrutural Completo</h3>
+                        <p>Desenvolvemos a arquitetura do site para que o Google entenda e classifique seu conteúdo facilmente.</p>
+                    </div>
+                    <div class="beneficio-item">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <h3>Segurança e Atualizações</h3>
+                        <p>Garantia de código limpo, seguro e suporte para atualizações futuras e manutenção contínua.</p>
+                    </div>
+                    <div class="beneficio-item">
+                        <i class="fa-solid fa-headset"></i>
+                        <h3>Foco na Experiência (UX/UI)</h3>
+                        <p>Design intuitivo e fácil de usar, pensado para o seu cliente converter sem hesitação.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+<section id="contato" style="background-color: var(--fundo-card);">
+            <div class="container" style="max-width: 800px;">
+                <h2>Ainda tem Dúvidas? Fale Conosco</h2>
+                <p>Se preferir, envie uma mensagem mais detalhada sobre seu projeto e entraremos em contato.</p>
+                
+                <form action="https://formspree.io/f/mrbyopar" method="POST" class="form-contato">
+                    <input type="text" name="Nome_Completo" placeholder="Seu Nome Completo" required>
+                    <input type="text" name="Empresa_Completo" placeholder="Nome da Sua Empresa" required>
+                    <input type="email" name="Email_Contato" placeholder="E-mail para Contato" required>
+                    <textarea name="Mensagem_Detalhada" placeholder="Descreva seu projeto ou dúvida (Tipo de site, orçamento, prazo, etc.)..." rows="6"></textarea>
+                    <button type="submit" class="btn-cta">Enviar Mensagem Detalhada</button>
+                </form>
+            </div>
+        </section>
+    </main>
+<footer>
+        <div class="container">
+            <p>Mendev - Seu Parceiro em Desenvolvimento Web de Alta Performance.</p>
+            <p>&copy; 2025 Mendev | <a href="#hero">Sites Profissionais</a>. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5571992546082?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20Mendev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20minha%20empresa." 
+        id="whatsapp-flutuante" target="_blank" title="Fale conosco no WhatsApp">
+       <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Não é necessário JS extra, o Formspree cuida do envio.
+    </script>
+</body>
+</html>
