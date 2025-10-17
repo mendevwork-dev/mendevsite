@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mendev | O Seu Software Web para Sites Profissionais</title>
+    <title>Mendev | Sites Otimizados para a Primeira Página do Google</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
             --cta-hover: #FFD700; /* Amarelo um pouco mais escuro para o hover */
             --cta-secundaria: #00FFFF; /* CIANO ELÉTRICO / AQUA - Destaque Secundário (Tags, etc.) */
             --fundo-card: #ffffff; /* Fundo do formulário/cards */
+            --fundo-alternativo: #f7f9fc; /* Fundo para seções alternadas */
             --sombra-card: rgba(0, 0, 0, 0.2);
             --sombra-cta: rgba(255, 230, 0, 0.6); /* Sombra mais vibrante para o CTA amarelo */
         }
@@ -69,20 +70,19 @@
             justify-content: space-between;
         }
 
-        /* NOVO: Estilo da Logomarca (Header e Footer) */
         .logo-mendev {
-            display: flex; /* Para alinhar o ícone e o texto */
+            display: flex; 
             align-items: center;
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--texto-claro);
             text-decoration: none;
-            gap: 0.5rem; /* Espaçamento entre o ícone e o nome */
+            gap: 0.5rem; 
         }
         .logo-icon {
-            color: var(--cta-secundaria); /* Ciano Elétrico para o ícone */
+            color: var(--cta-secundaria); 
             font-size: 2.2rem;
-            line-height: 1; /* Alinhamento vertical */
+            line-height: 1; 
         }
         .logo-text {
             color: var(--texto-claro);
@@ -109,7 +109,7 @@
         /* Botão CTA no Header (Destacado) */
         .btn-header-cta {
             background: var(--cta-primaria);
-            color: var(--primaria-fundo); /* Texto escuro para contraste */
+            color: var(--primaria-fundo); 
             padding: 0.7rem 1.5rem;
             border-radius: 4px;
             font-weight: 700;
@@ -123,8 +123,8 @@
         /* Botão Principal de CTA */
         .btn-cta {
             display: inline-block;
-            background: var(--cta-primaria); /* Amarelo Elétrico */
-            color: var(--primaria-fundo); /* Texto Azul Cobalto Escuro */
+            background: var(--cta-primaria); 
+            color: var(--primaria-fundo); 
             padding: 0.9rem 2.2rem;
             border-radius: 8px;
             font-weight: 700;
@@ -132,7 +132,7 @@
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px var(--sombra-cta); /* Sombra mais vibrante */
+            box-shadow: 0 4px 15px var(--sombra-cta); 
             border: none;
             cursor: pointer;
         }
@@ -155,18 +155,17 @@
             color: var(--texto-claro);
             font-weight: 800;
             text-align: left;
+            line-height: 1.2;
         }
-        /* Destaque no H1 */
+        
         #hero h1 span {
-            color: var(--cta-primaria); /* Amarelo Elétrico */
-            display: block;
-            font-size: 3.5rem;
+            color: var(--cta-primaria); 
         }
 
         h2 {
             font-size: 2.5rem;
             margin-bottom: 2.5rem;
-            color: var(--primaria-fundo); /* Azul Cobalto Profundo */
+            color: var(--primaria-fundo); 
             font-weight: 700;
             position: relative;
         }
@@ -179,7 +178,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--cta-primaria); /* Amarelo Elétrico */
+            background: var(--cta-primaria); 
             border-radius: 4px;
         }
 
@@ -189,13 +188,15 @@
             font-size: 1.1rem;
             color: var(--texto-principal);
         }
+        .section-intro-p {
+             color: #555;
+        }
 
         /* Seção Hero - Fundo Escuro com Gradiente */
         #hero {
             min-height: 90vh;
             padding-top: 5rem;
             padding-bottom: 3rem;
-            /* Gradiente Azul Cobalto Profundo para Azul Escuro Intenso */
             background: linear-gradient(135deg, var(--primaria-fundo) 0%, var(--secundaria-fundo) 100%);
             color: var(--texto-claro);
             text-align: left;
@@ -217,6 +218,7 @@
             color: rgba(255, 255, 255, 0.85);
             margin: 0 0 2rem 0;
             max-width: 100%;
+            font-size: 1.2rem;
         }
 
         .hero-form-wrapper {
@@ -246,13 +248,18 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .form-contato input:focus, .form-contato textarea:focus {
-            border-color: var(--cta-primaria); /* Amarelo Elétrico no foco */
+            border-color: var(--cta-primaria);
             box-shadow: 0 0 0 3px rgba(255, 230, 0, 0.3);
             outline: none;
         }
         .form-contato button {
             margin-top: 0.5rem;
             width: 100%;
+        }
+        
+        /* NOVA SEÇÃO: PROBLEMA */
+        #problema {
+            background-color: var(--fundo-alternativo);
         }
 
         /* Cards de Modelo (Portfólio) */
@@ -272,14 +279,26 @@
             width: 350px;
             text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 5px solid var(--cta-secundaria); /* Ciano Elétrico para a borda do card */
+            border-top: 5px solid var(--cta-secundaria); 
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .modelo-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
+
+        .modelo-card .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+         .modelo-card .card-content p {
+             flex-grow: 1;
+         }
+
 
         .modelo-card img {
             width: 100%;
@@ -302,18 +321,19 @@
 
         .tag {
             display: inline-block;
-            background: var(--cta-secundaria); /* Ciano Elétrico para as tags */
-            color: var(--primaria-fundo); /* Texto Azul Cobalto Escuro */
+            background: var(--cta-secundaria); 
+            color: var(--primaria-fundo); 
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
+            align-self: flex-start;
         }
 
-        /* Seção de Diferenciais (Fundo Claro) */
+        /* Seção de Diferenciais */
         #diferenciais {
-             background-color: #f7f9fc;
+             background-color: var(--fundo-alternativo);
         }
         .beneficios-grid {
             display: grid;
@@ -336,9 +356,9 @@
 
         .beneficio-item i {
             font-size: 2.5rem;
-            color: var(--cta-primaria); /* Amarelo Elétrico */
+            color: var(--cta-primaria); 
             margin-bottom: 1rem;
-            background: rgba(255, 230, 0, 0.1); /* Fundo suave para o ícone */
+            background: rgba(255, 230, 0, 0.1); 
             padding: 15px;
             border-radius: 50%;
         }
@@ -351,7 +371,7 @@
 
         /* Rodapé */
         footer {
-            background-color: var(--primaria-fundo); /* Azul Cobalto Profundo */
+            background-color: var(--primaria-fundo); 
             color: var(--texto-claro);
             padding: 3rem 0;
             text-align: center;
@@ -363,7 +383,7 @@
             font-size: 0.9rem;
         }
         footer a {
-            color: var(--cta-primaria); /* Amarelo Elétrico */
+            color: var(--cta-primaria); 
             text-decoration: none;
         }
 
@@ -372,7 +392,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #25D366; /* Verde original do WhatsApp */
+            background-color: #25D366; 
             color: white;
             width: 60px;
             height: 60px;
@@ -398,6 +418,7 @@
             .hero-text {
                 max-width: 100%;
                 order: 2;
+                margin-top: 2rem;
             }
             .hero-text h1, .hero-text p {
                  text-align: center;
@@ -405,19 +426,16 @@
             .hero-form-wrapper {
                 width: 100%;
                 max-width: 450px;
-                margin-top: 3rem;
                 order: 1;
             }
-            #hero h1 { font-size: 3rem; }
-            #hero h1 span { font-size: 2.5rem; }
+            h1 { font-size: 3rem; text-align: center;}
             h2 { font-size: 2rem; }
             nav ul { gap: 1rem; }
             .btn-header-cta { padding: 0.5rem 1rem; }
         }
         
         @media (max-width: 600px) {
-            #hero h1 { font-size: 2.5rem; }
-            #hero h1 span { font-size: 2rem; }
+            h1 { font-size: 2.5rem; }
             nav ul li:not(:last-child) { display: none; }
             nav { justify-content: space-between; }
         }
@@ -433,9 +451,9 @@
                     <span class="logo-text">Mendev</span>
                 </a>
                 <ul>
-                    <li><a href="#modelos">Portfólio</a></li>
-                    <li><a href="#diferenciais">Serviços</a></li>
-                    <li><a href="#contato" class="btn-header-cta">Fale Conosco</a></li>
+                    <li><a href="#modelos">Projetos</a></li>
+                    <li><a href="#diferenciais">Nossa Metodologia</a></li>
+                    <li><a href="#contato" class="btn-header-cta">Pedir Análise Gratuita</a></li>
                 </ul>
             </nav>
         </div>
@@ -447,22 +465,18 @@
                 <div class="hero-content">
                     
                     <div class="hero-text">
-                        <h1>Desenvolvimento Web <span>DE ALTO NÍVEL</span></h1>
-                        <p>Plataformas digitais sob medida para microempresas, startups e negócios. Transforme sua presença online em uma máquina de vendas com a Mendev.</p>
-                        
-                        <div style="margin-top: 3rem;">
-                            <a href="#diferenciais" class="btn-cta" style="background: var(--cta-secundaria); color: var(--primaria-fundo); box-shadow: none;">Descubra Nossas Soluções</a>
-                        </div>
+                        <h1>Seu Site na Primeira Página do <span>GOOGLE.</span></h1>
+                        <p>Deixe de ter um site que é apenas um cartão de visitas digital. Nós construímos plataformas otimizadas para que você seja encontrado por quem realmente importa: seus futuros clientes.</p>
                     </div>
 
                     <div class="hero-form-wrapper">
-                        <h3>Solicite sua Proposta Rápida!</h3>
+                        <h3>Receba um Diagnóstico de SEO Gratuito!</h3>
                         <form id="heroForm" class="form-contato">
                             <input type="text" name="Nome_Hero" placeholder="Seu Nome Completo" required>
                             <input type="text" name="Empresa_Hero" placeholder="Nome da Empresa/Negócio" required>
                             <input type="email" name="Email_Hero" placeholder="Seu Melhor E-mail" required>
                             <input type="text" name="WhatsApp_Hero" placeholder="WhatsApp (DDD + Número)" required>
-                            <button type="submit" class="btn-cta" style="width: 100%;">Solicitar Proposta Grátis</button>
+                            <button type="submit" class="btn-cta">QUERO MEU DIAGNÓSTICO GRÁTIS</button>
                         </form>
                     </div>
 
@@ -470,92 +484,107 @@
             </div>
         </section>
 
+        <section id="problema">
+            <div class="container">
+                <h2>Um site bonito que ninguém visita não gera vendas.</h2>
+                <p class="section-intro-p">Muitas empresas investem em um design incrível, mas esquecem do essencial: a visibilidade. De que adianta ter a melhor vitrine se ela está em uma rua sem saída? Se seu site não aparece no Google, você está perdendo clientes todos os dias para a concorrência.</p>
+            </div>
+        </section>
+
         <section id="modelos">
             <div class="container">
-                <h2>Portfólio & Nossos Tipos de Projetos</h2>
-                <p>Veja as soluções que entregamos e encontre o projeto ideal para a sua necessidade de negócio.</p>
+                <h2>Projetos que Geram Tráfego Orgânico</h2>
+                <p class="section-intro-p">Cada projeto é construído com uma base sólida de SEO para atrair e converter visitantes do Google.</p>
 
                 <div class="modelos-grid">
                     <div class="modelo-card">
-                        <img src="site-institucional.jpeg" alt="Site Institucional">
-                        <h3>Sites Institucionais</h3>
-                        <p>Otimizado para autoridade e credibilidade, ideal para empresas que buscam consolidar sua marca.</p>
-                        <span class="tag">Mais Vistos</span>
+                        <img src="site-institucional.jpeg" alt="Site Institucional com Foco em SEO">
+                        <div class="card-content">
+                            <h3>Sites Institucionais</h3>
+                            <p>Fortaleça sua autoridade online e apareça nas buscas locais. Ideal para empresas que buscam credibilidade e clientes qualificados.</p>
+                            <span class="tag">SEO Local</span>
+                        </div>
                     </div>
                     
                     <div class="modelo-card">
-                        <img src="loja-virtual.jpg" alt="Loja Virtual">
-                        <h3>Lojas Virtuais (E-commerce)</h3>
-                        <p>Desenvolvimento completo de e-commerce com foco em experiência do usuário e alta taxa de checkout.</p>
-                        <span class="tag">Vendas 24/7</span>
+                        <img src="loja-virtual.jpg" alt="Loja Virtual Otimizada para SEO">
+                        <div class="card-content">
+                            <h3>Lojas Virtuais (E-commerce)</h3>
+                            <p>Plataformas de e-commerce otimizadas para que seus produtos sejam encontrados no Google Shopping e na busca orgânica.</p>
+                            <span class="tag">SEO para E-commerce</span>
+                        </div>
                     </div>
 
                     <div class="modelo-card">
-                        <img src="landing-page.jpg" alt="Landing Page">
-                        <h3>Landing Pages de Vendas</h3>
-                        <p>Páginas de conversão rápidas para campanhas de marketing, garantindo o melhor ROI em seus anúncios.</p>
-                        <span class="tag">Tráfego Pago</span>
+                        <img src="landing-page.jpg" alt="Landing Page de Alta Conversão Orgânica">
+                        <div class="card-content">
+                            <h3>Landing Pages de Vendas</h3>
+                            <p>Páginas de alta performance com SEO focado em palavras-chave específicas para capturar leads de forma orgânica e contínua.</p>
+                            <span class="tag">Foco em Conversão</span>
+                        </div>
                     </div>
                 </div>
-                <a href="#contato" class="btn-cta" style="margin-top: 3rem;">Ver Todos os Casos de Sucesso</a>
+                <a href="#contato" class="btn-cta" style="margin-top: 3rem;">QUERO UM PROJETO DE SUCESSO</a>
             </div>
         </section>
+
         <section id="diferenciais">
             <div class="container">
-                <h2>Diferenciais que Impulsionam o Seu Negócio</h2>
-                <p>Nossa entrega vai além do código: garantimos que seu site seja uma ferramenta estratégica de crescimento.</p>
+                <h2>Mais que um Site, um Motor de Crescimento</h2>
+                <p class="section-intro-p">Nossa metodologia integra design, tecnologia e a mais profunda análise de SEO para garantir resultados reais.</p>
                 <div class="beneficios-grid">
+                    <div class="beneficio-item">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        <h3>SEO como Prioridade Máxima</h3>
+                        <p>Desde a primeira linha de código, seu site é construído para ser amado pelo Google, garantindo a melhor indexação e ranqueamento.</p>
+                    </div>
                     <div class="beneficio-item">
                         <i class="fa-solid fa-rocket"></i>
                         <h3>Performance de Carregamento</h3>
-                        <p>Seu site será otimizado para a velocidade máxima, fator crucial para SEO e retenção de visitantes.</p>
+                        <p>A velocidade é um fator crítico de ranqueamento. Otimizamos cada detalhe para que seu site seja ultrarrápido e eficiente.</p>
                     </div>
                     <div class="beneficio-item">
-                        <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        <h3>SEO Estrutural Completo</h3>
-                        <p>Desenvolvemos a arquitetura do site para que o Google entenda e classifique seu conteúdo facilmente.</p>
+                        <i class="fa-solid fa-bullseye"></i> <h3>Design Focado em Conversão (UX/UI)</h3>
+                        <p>Criamos uma jornada intuitiva que guia o visitante do Google até a conversão, seja uma compra, contato ou pedido de orçamento.</p>
                     </div>
-                    <div class="beneficio-item">
+                     <div class="beneficio-item">
                         <i class="fa-solid fa-shield-halved"></i>
-                        <h3>Segurança e Atualizações</h3>
-                        <p>Garantia de código limpo, seguro e suporte para atualizações futuras e manutenção contínua.</p>
-                    </div>
-                    <div class="beneficio-item">
-                        <i class="fa-solid fa-headset"></i>
-                        <h3>Foco na Experiência (UX/UI)</h3>
-                        <p>Design intuitivo e fácil de usar, pensado para o seu cliente converter sem hesitação.</p>
+                        <h3>Segurança e Confiabilidade</h3>
+                        <p>Garantia de código limpo, seguro e suporte para atualizações futuras e manutenção contínua do seu ativo digital.</p>
                     </div>
                 </div>
             </div>
         </section>
+
         <section id="contato" style="background-color: var(--fundo-card);">
             <div class="container" style="max-width: 800px;">
-                <h2>Ainda tem Dúvidas? Fale Conosco</h2>
-                <p>Se preferir, envie uma mensagem mais detalhada sobre seu projeto e entraremos em contato.</p>
+                <h2>Vamos Colocar seu Site no Topo do Google?</h2>
+                <p class="section-intro-p">Preencha o formulário abaixo com os detalhes do seu projeto e receba uma análise inicial sem compromisso.</p>
                 
                 <form action="https://formspree.io/f/mrbyopar" method="POST" class="form-contato">
                     <input type="text" name="Nome_Completo" placeholder="Seu Nome Completo" required>
                     <input type="text" name="Empresa_Completo" placeholder="Nome da Sua Empresa" required>
                     <input type="email" name="Email_Contato" placeholder="E-mail para Contato" required>
                     <textarea name="Mensagem_Detalhada" placeholder="Descreva seu projeto ou dúvida (Tipo de site, orçamento, prazo, etc.)..." rows="6"></textarea>
-                    <button type="submit" class="btn-cta">Enviar Mensagem Detalhada</button>
+                    <button type="submit" class="btn-cta">Enviar e Iniciar Análise</button>
                 </form>
             </div>
         </section>
     </main>
+
     <footer>
         <div class="container">
             <a href="#hero" class="logo-mendev" style="color: var(--texto-claro); margin-bottom: 1rem; justify-content: center;">
                 <span class="logo-icon">&lt;M</span> 
                 <span class="logo-text">Mendev</span>
             </a>
-            <p>Mendev - Seu Parceiro em Desenvolvimento Web de Alta Performance.</p>
-            <p>&copy; 2025 Mendev | <a href="#hero">Sites Profissionais</a>. Todos os direitos reservados.</p>
+            <p>Mendev - Desenvolvimento de Sites Otimizados para Crescimento Orgânico.</p>
+            <p>&copy; 2025 Mendev | <a href="#hero">Posicionamento no Google</a>. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <a href="https://wa.me/5571992546082?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20Mendev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20minha%20empresa." 
-        id="whatsapp-flutuante" target="_blank" title="Fale conosco no WhatsApp">
+       id="whatsapp-flutuante" target="_blank" title="Fale conosco no WhatsApp">
        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -565,7 +594,7 @@
 
             const form = event.target;
             const formData = new FormData(form);
-            const formspreeUrl = "https://formspree.io/f/mrbyopar"; // *** SUBSTITUA PELO SEU ENDPOINT FORMREE AQUI ***
+            const formspreeUrl = "https://formspree.io/f/mrbyopar"; 
 
             // 1. Enviar os dados via Formspree (e-mail)
             fetch(formspreeUrl, {
@@ -581,15 +610,14 @@
 
                     // 2. Abrir o WhatsApp após a tentativa de envio do email
                     const nome = formData.get('Nome_Hero') || 'Cliente';
-                    const numeroWhatsapp = '5571992546082'; // *** SUBSTITUA PELO SEU NÚMERO DE WHATSAPP AQUI ***
+                    const numeroWhatsapp = '5571992546082'; 
                     
-                    const mensagem = encodeURIComponent(`Olá, sou o(a) ${nome} e gostaria de solicitar uma proposta grátis. Meu contato é: Nome: ${nome}, E-mail: ${formData.get('Email_Hero')}. Por favor, podemos conversar sobre o meu projeto?`);
+                    const mensagem = encodeURIComponent(`Olá, sou o(a) ${nome} e gostaria de solicitar meu diagnóstico de SEO gratuito. Meu contato é: E-mail: ${formData.get('Email_Hero')}. Podemos conversar?`);
                     
                     const whatsappUrl = `https://wa.me/${numeroWhatsapp}?text=${mensagem}`;
 
                     window.open(whatsappUrl, '_blank');
 
-                    // Opcional: Limpar o formulário ou dar um feedback visual
                     form.reset(); 
                     alert("Sua solicitação foi enviada! Abrindo o WhatsApp para continuarmos a conversa...");
 
@@ -608,7 +636,6 @@
                 console.error("Erro no envio do formulário:", error);
                 alert("Ocorreu um erro de conexão. Por favor, tente o WhatsApp diretamente.");
                 window.open(`https://wa.me/5571992546082?text=Tive%20problemas%20ao%20enviar%20a%20proposta%20pelo%20site.`, '_blank');
-
             });
         });
     </script>
