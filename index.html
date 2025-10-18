@@ -1,600 +1,876 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desenvolvedor Front-End | Criando o Futuro da Web</title>
-    <meta name="description"
-        content="Desenvolvedor Front-End especializado em criar sites modernos, rápidos e otimizados para SEO que geram resultados.">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts: Poppins -->
+    <title>Mendev | Sites Otimizados para a Primeira Página do Google</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* Estilos customizados */
+        /* ======================================================================= */
+        /* === VARIÁVEIS DE COR E CONFIGURAÇÕES GLOBAIS === */
+        /* ======================================================================= */
+        :root {
+            --primaria-fundo: #1A004B; /* Azul Cobalto Profundo */
+            --secundaria-fundo: #000040; /* Azul Escuro Intenso */
+            --texto-principal: #333333;
+            --texto-claro: #f4f4f4;
+            --cta-primaria: #FFE600; /* Amarelo Elétrico */
+            --cta-hover: #FFD700;
+            --cta-secundaria: #00FFFF; /* Ciano Elétrico */
+            --fundo-card: #ffffff;
+            --fundo-alternativo: #f7f9fc;
+            --sombra-card: rgba(0, 0, 0, 0.1);
+            --sombra-cta: rgba(255, 230, 0, 0.5);
+        }
+
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0a0a1a;
-            color: #e0e0e0;
+            background: var(--fundo-card);
+            color: var(--texto-principal);
+            line-height: 1.6;
         }
 
-        /* Efeito de glitch para o título */
-        .glitch {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        /* ======================================================================= */
+        /* === HEADER E NAVEGAÇÃO === */
+        /* ======================================================================= */
+        header {
+            background: linear-gradient(90deg, var(--primaria-fundo) 0%, var(--secundaria-fundo) 100%);
+            position: sticky;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-mendev {
+            display: flex; 
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--texto-claro);
+            text-decoration: none;
+            gap: 0.5rem; 
+        }
+
+        .logo-icon {
+            color: var(--cta-secundaria); 
+            font-size: 2.2rem;
+            line-height: 1; 
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--texto-claro);
+            font-weight: 600;
+            transition: color 0.3s ease;
             position: relative;
-            color: white;
+            padding-bottom: 5px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--cta-primaria);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--cta-primaria);
+        }
+        .nav-link:hover::after {
+            width: 100%;
         }
 
-        .glitch:before,
-        .glitch:after {
-            content: attr(data-text);
+        .btn-header-cta {
+            background: var(--cta-primaria);
+            color: var(--primaria-fundo); 
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-header-cta:hover {
+            background: var(--cta-hover);
+            color: var(--primaria-fundo);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--texto-claro);
+        }
+
+        /* ======================================================================= */
+        /* === BOTÕES E SEÇÕES GERAIS === */
+        /* ======================================================================= */
+        .btn-cta {
+            display: inline-block;
+            background: var(--cta-primaria); 
+            color: var(--primaria-fundo); 
+            padding: 0.9rem 2.2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px var(--sombra-cta); 
+            border: none;
+            cursor: pointer;
+        }
+        .btn-cta:hover {
+            background: var(--cta-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--sombra-cta);
+        }
+
+        section {
+            padding: 6rem 0;
+            text-align: center;
+            overflow: hidden; /* Garante que as animações não causem overflow */
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem); /* Fonte responsiva */
+            margin-bottom: 1rem;
+            color: var(--texto-claro);
+            font-weight: 800;
+            text-align: left;
+            line-height: 1.2;
+        }
+        #hero h1 span {
+            color: var(--cta-primaria); 
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem); /* Fonte responsiva */
+            margin-bottom: 2.5rem;
+            color: var(--primaria-fundo); 
+            font-weight: 700;
+            position: relative;
+        }
+        h2::after {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--cta-primaria); 
+            border-radius: 4px;
+        }
+
+        .section-intro-p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* ======================================================================= */
+        /* === SEÇÃO HERO === */
+        /* ======================================================================= */
+        #hero {
+            min-height: 90vh;
+            padding: 5rem 0 3rem 0;
+            background: linear-gradient(135deg, var(--primaria-fundo) 0%, var(--secundaria-fundo) 100%);
+            color: var(--texto-claro);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 60%;
+        }
+        .hero-text p {
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0 0 2rem 0;
+            max-width: 100%;
+            font-size: 1.2rem;
+            text-align: left;
+        }
+
+        .hero-form-wrapper {
+            background: var(--fundo-card);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            flex-shrink: 0;
+        }
+        .hero-form-wrapper h3 {
+            color: var(--primaria-fundo);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* ======================================================================= */
+        /* === FORMULÁRIOS === */
+        /* ======================================================================= */
+        .form-contato input, .form-contato textarea {
             width: 100%;
-            height: 100%;
-            background: #0a0a1a;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-contato input:focus, .form-contato textarea:focus {
+            border-color: var(--cta-primaria);
+            box-shadow: 0 0 0 3px rgba(255, 230, 0, 0.3);
+            outline: none;
+        }
+        .form-contato button {
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+        .form-message {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .form-message.success { color: #28a745; }
+        .form-message.error { color: #dc3545; }
+
+
+        /* ======================================================================= */
+        /* === SEÇÃO PROBLEMA, MODELOS E DIFERENCIAIS === */
+        /* ======================================================================= */
+        #problema, #diferenciais {
+            background-color: var(--fundo-alternativo);
+        }
+
+        .modelos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .modelo-card {
+            background: var(--fundo-card);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 350px;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--cta-secundaria); 
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-
-        .glitch:before {
-            left: 2px;
-            text-shadow: -2px 0 #ff00c1;
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        .modelo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
         }
-
-        .glitch:after {
-            left: -2px;
-            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        .modelo-card .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
-
-        @keyframes glitch-anim-1 {
-            0% {
-                clip-path: polygon(0 2%, 100% 2%, 100% 98%, 0 98%);
-            }
-
-            25% {
-                clip-path: polygon(0 75%, 100% 75%, 100% 100%, 0 100%);
-            }
-
-            50% {
-                clip-path: polygon(0 25%, 100% 25%, 100% 35%, 0 35%);
-            }
-
-            75% {
-                clip-path: polygon(0 0, 100% 0, 100% 15%, 0 15%);
-            }
-
-            100% {
-                clip-path: polygon(0 50%, 100% 50%, 100% 60%, 0 60%);
-            }
+        .modelo-card .card-content p {
+            flex-grow: 1;
+            max-width: 100%;
+            margin: 0;
         }
-
-        @keyframes glitch-anim-2 {
-            0% {
-                clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
-            }
-
-            25% {
-                clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
-            }
-
-            50% {
-                clip-path: polygon(0 30%, 100% 30%, 100% 45%, 0 45%);
-            }
-
-            75% {
-                clip-path: polygon(0 55%, 100% 55%, 100% 70%, 0 70%);
-            }
-
-            100% {
-                clip-path: polygon(0 20%, 100% 20%, 100% 35%, 0 35%);
-            }
-        }
-
-        /* Partículas de fundo */
-        #particles-js {
-            position: absolute;
+        .modelo-card img {
             width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+        }
+        .modelo-card:hover img {
+            transform: scale(1.05);
+        }
+        .modelo-card h3 {
+            color: var(--primaria-fundo);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        /* Animações de Scroll */
-        .reveal {
+        .tag {
+            display: inline-block;
+            background: var(--cta-secundaria); 
+            color: var(--primaria-fundo); 
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            align-self: flex-start;
+        }
+
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .beneficio-item {
+            background: var(--fundo-card);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .beneficio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .beneficio-item i {
+            font-size: 2.5rem;
+            color: var(--cta-primaria); 
+            margin-bottom: 1rem;
+            background: rgba(255, 230, 0, 0.1); 
+            padding: 15px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .beneficio-item h3 {
+            font-size: 1.2rem;
+            color: var(--primaria-fundo);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ======================================================================= */
+        /* === NOVA SEÇÃO: DEPOIMENTOS === */
+        /* ======================================================================= */
+        #depoimentos {
+            background-color: var(--fundo-card);
+        }
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .depoimento-card {
+            background-color: var(--fundo-alternativo);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--cta-primaria);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .depoimento-card i {
+            font-size: 2rem;
+            color: var(--cta-primaria);
+            margin-bottom: 1rem;
+        }
+        .depoimento-card p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1.5rem;
+            max-width: 100%;
+        }
+        .depoimento-autor {
+            font-weight: 700;
+            color: var(--primaria-fundo);
+        }
+        .depoimento-autor span {
+            font-weight: 400;
+            color: #777;
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        /* ======================================================================= */
+        /* === RODAPÉ E BOTÃO FLUTUANTE === */
+        /* ======================================================================= */
+        footer {
+            background-color: var(--primaria-fundo); 
+            color: var(--texto-claro);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            max-width: 100%;
+        }
+        footer a {
+            color: var(--cta-primaria); 
+            text-decoration: none;
+        }
+
+        #whatsapp-flutuante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366; 
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #whatsapp-flutuante:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+
+        /* ======================================================================= */
+        /* === ANIMAÇÕES DE SCROLL === */
+        /* ======================================================================= */
+        .animate-on-scroll {
             opacity: 0;
-            transform: translateY(40px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .reveal.visible {
+        .fade-in-up {
+            transform: translateY(50px);
+        }
+        .fade-in-left {
+            transform: translateX(-50px);
+        }
+        .fade-in-right {
+            transform: translateX(50px);
+        }
+        .animate-on-scroll.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate(0, 0);
+        }
+
+        /* ======================================================================= */
+        /* === RESPONSIVIDADE === */
+        /* ======================================================================= */
+        @media (max-width: 1050px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                max-width: 100%;
+                order: 2;
+                margin-top: 2rem;
+            }
+            .hero-text h1, .hero-text p {
+                text-align: center;
+            }
+            .hero-form-wrapper {
+                width: 100%;
+                max-width: 500px;
+                order: 1;
+            }
+        }
+         
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px; /* Altura do header */
+                flex-direction: column;
+                background-color: var(--primaria-fundo);
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: 0.3s;
+                gap: 2rem;
+                padding-top: 2rem;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+            }
+            .btn-header-cta {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .hamburger {
+                display: block;
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
         }
     </style>
 </head>
+<body>
 
-<body class="overflow-x-hidden">
-
-    <!-- Container principal -->
-    <div class="relative">
-
-        <!-- 1. Seção de Herói -->
-        <section id="hero" class="h-screen flex items-center justify-center text-center relative overflow-hidden">
-            <div id="particles-js"></div>
-            <div class="z-10 px-4">
-                <h1 id="hero-title" class="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-white"
-                    data-text="MENDEV">
-                    <span class="glitch" data-text="MENDEV">MENDEV</span>
-                </h1>
-                <p id="hero-subtitle" class="text-lg md:text-2xl max-w-3xl mx-auto text-gray-300"></p>
-                <a href="#contato"
-                    class="mt-8 inline-block bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50">
-                    Quero um Site que Gera Resultados
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#hero" class="logo-mendev">
+                    <span class="logo-icon">&lt;M</span> 
+                    <span class="logo-text">Mendev</span>
                 </a>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#modelos" class="nav-link">Projetos</a></li>
+                    <li><a href="#diferenciais" class="nav-link">Metodologia</a></li>
+                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                    <li><a href="#contato" class="btn-header-cta">Análise Gratuita</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text animate-on-scroll fade-in-left">
+                        <h1>Seu Site na Primeira Página do <span>GOOGLE.</span></h1>
+                        <p>Deixe de ter um site que é apenas um cartão de visitas digital. Nós construímos plataformas otimizadas para que você seja encontrado por quem realmente importa: seus futuros clientes.</p>
+                    </div>
+                    <div class="hero-form-wrapper animate-on-scroll fade-in-right">
+                        <h3>Receba um Diagnóstico de SEO Gratuito!</h3>
+                        <form id="heroForm" class="form-contato">
+                            <input type="text" name="Nome_Hero" placeholder="Seu Nome Completo" required>
+                            <input type="text" name="Empresa_Hero" placeholder="Nome da Empresa/Negócio" required>
+                            <input type="email" name="Email_Hero" placeholder="Seu Melhor E-mail" required>
+                            <input type="tel" name="WhatsApp_Hero" placeholder="WhatsApp (DDD + Número)" required>
+                            <button type="submit" class="btn-cta">QUERO MEU DIAGNÓSTICO GRÁTIS</button>
+                            <p class="form-message"></p>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <main class="relative z-10 bg-[#0a0a1a]">
-            <!-- 2. Seção "O Problema" -->
-            <section id="problema" class="py-20 md:py-32 container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="reveal">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Seu site é uma agulha no palheiro
-                            digital?</h2>
-                        <p class="text-lg mb-6 text-gray-400">Você pode ter o site mais impressionante do mundo, mas se
-                            ninguém o encontrar, ele não existe. A maioria dos seus potenciais clientes está procurando
-                            por seus serviços no Google agora mesmo. Se o seu site não estiver na primeira página, você
-                            está perdendo negócios para a concorrência.</p>
-                        <p class="text-xl font-semibold italic text-cyan-400">"Um design incrível é apenas metade da
-                            equação."</p>
+        <section id="problema">
+            <div class="container animate-on-scroll fade-in-up">
+                <h2>Um site bonito que ninguém visita não gera vendas.</h2>
+                <p class="section-intro-p">Muitas empresas investem em um design incrível, mas esquecem do essencial: a visibilidade. De que adianta ter a melhor vitrine se ela está em uma rua sem saída? Se seu site não aparece no Google, você está perdendo clientes todos os dias para a concorrência.</p>
+            </div>
+        </section>
+
+        <section id="modelos">
+            <div class="container">
+                <h2 class="animate-on-scroll fade-in-up">Projetos que Geram Tráfego Orgânico</h2>
+                <p class="section-intro-p animate-on-scroll fade-in-up">Cada projeto é construído com uma base sólida de SEO para atrair e converter visitantes do Google.</p>
+                <div class="modelos-grid">
+                    <div class="modelo-card animate-on-scroll fade-in-up" data-delay="0">
+                        <img src="https://images.unsplash.com/photo-1559028006-44d5a2b72bf9?q=80&w=2070&auto=format&fit=crop" alt="Site Institucional com Foco em SEO">
+                        <div class="card-content">
+                            <h3>Sites Institucionais</h3>
+                            <p>Fortaleça sua autoridade online e apareça nas buscas locais. Ideal para empresas que buscam credibilidade e clientes qualificados.</p>
+                            <span class="tag">SEO Local</span>
+                        </div>
                     </div>
-                    <div class="reveal flex justify-center items-center">
-                        <!-- Gráfico animado simples -->
-                        <div
-                            class="w-full max-w-sm h-64 bg-gray-900/50 rounded-lg p-4 relative overflow-hidden border border-purple-500/30">
-                            <div class="absolute inset-0 grid grid-cols-10 grid-rows-10 gap-2 opacity-10">
-                                <!-- Grid lines -->
-                                {[...Array(11)].map((_, i) => (
-                                <div key={i} class="absolute top-0 bottom-0 w-px bg-purple-500" style={{left: `${i *
-                                    10}%`}}></div>,
-                                <div key={i} class="absolute left-0 right-0 h-px bg-purple-500" style={{top: `${i *
-                                    10}%`}}></div>
-                                ))}
-                            </div>
-                            <span class="absolute text-sm text-gray-500 top-2 left-2">Buscas</span>
-                            <div class="absolute w-2 h-2 bg-cyan-400 rounded-full animate-ping"
-                                style="bottom: 10%; right: 15%;"></div>
-                            <div class="absolute w-2 h-2 bg-cyan-400 rounded-full" style="bottom: 10%; right: 15%;"
-                                title="Seu site 'invisível'"></div>
+                    <div class="modelo-card animate-on-scroll fade-in-up" data-delay="200">
+                        <img src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=2070&auto=format&fit=crop" alt="Loja Virtual Otimizada para SEO">
+                        <div class="card-content">
+                            <h3>Lojas Virtuais (E-commerce)</h3>
+                            <p>Plataformas de e-commerce otimizadas para que seus produtos sejam encontrados no Google Shopping e na busca orgânica.</p>
+                            <span class="tag">SEO para E-commerce</span>
+                        </div>
+                    </div>
+                    <div class="modelo-card animate-on-scroll fade-in-up" data-delay="400">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop" alt="Landing Page de Alta Conversão Orgânica">
+                        <div class="card-content">
+                            <h3>Landing Pages de Vendas</h3>
+                            <p>Páginas de alta performance com SEO focado em palavras-chave específicas para capturar leads de forma orgânica e contínua.</p>
+                            <span class="tag">Foco em Conversão</span>
                         </div>
                     </div>
                 </div>
-            </section>
+                <a href="#contato" class="btn-cta animate-on-scroll fade-in-up" style="margin-top: 3rem;">QUERO UM PROJETO DE SUCESSO</a>
+            </div>
+        </section>
 
-            <!-- 3. Seção "A Solução: SEO" -->
-            <section id="solucao" class="py-20 md:py-32 bg-gray-900/50">
-                <div class="container mx-auto px-6 text-center">
-                    <div class="reveal">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Como eu coloco seu negócio no mapa
-                            digital.</h2>
-                        <p class="text-lg max-w-3xl mx-auto mb-16 text-gray-400">SEO não é mágica, é tecnologia e
-                            estratégia. Eu construo sites com uma base sólida para o sucesso nos motores de busca.</p>
+        <section id="diferenciais">
+            <div class="container">
+                <h2 class="animate-on-scroll fade-in-up">Mais que um Site, um Motor de Crescimento</h2>
+                <p class="section-intro-p animate-on-scroll fade-in-up">Nossa metodologia integra design, tecnologia e a mais profunda análise de SEO para garantir resultados reais.</p>
+                <div class="beneficios-grid">
+                    <div class="beneficio-item animate-on-scroll fade-in-up" data-delay="0">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        <h3>SEO como Prioridade Máxima</h3>
+                        <p>Desde a primeira linha de código, seu site é construído para ser amado pelo Google, garantindo a melhor indexação e ranqueamento.</p>
                     </div>
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                        <!-- Item 1: Código Limpo -->
-                        <div
-                            class="reveal bg-gray-900 p-8 rounded-lg border border-purple-500/20 transition-all duration-300 hover:border-cyan-400 hover:-translate-y-2">
-                            <div class="text-cyan-400 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="mx-auto">
-                                    <polyline points="16 18 22 12 16 6"></polyline>
-                                    <polyline points="8 6 2 12 8 18"></polyline>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 text-white">&lt;/&gt; Código Limpo e Semântico</h3>
-                            <p class="text-gray-400">Escrevo um código que os motores de busca conseguem ler e entender
-                                perfeitamente. Isso é a base para um bom ranqueamento.</p>
+                    <div class="beneficio-item animate-on-scroll fade-in-up" data-delay="200">
+                        <i class="fa-solid fa-rocket"></i>
+                        <h3>Performance de Carregamento</h3>
+                        <p>A velocidade é um fator crítico de ranqueamento. Otimizamos cada detalhe para que seu site seja ultrarrápido e eficiente.</p>
+                    </div>
+                    <div class="beneficio-item animate-on-scroll fade-in-up" data-delay="400">
+                        <i class="fa-solid fa-bullseye"></i>
+                        <h3>Design Focado em Conversão (UX/UI)</h3>
+                        <p>Criamos uma jornada intuitiva que guia o visitante do Google até a conversão, seja uma compra, contato ou pedido de orçamento.</p>
+                    </div>
+                     <div class="beneficio-item animate-on-scroll fade-in-up" data-delay="600">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <h3>Segurança e Confiabilidade</h3>
+                        <p>Garantia de código limpo, seguro e suporte para atualizações futuras e manutenção contínua do seu ativo digital.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="depoimentos">
+            <div class="container">
+                <h2 class="animate-on-scroll fade-in-up">O Que Nossos Clientes Dizem</h2>
+                <p class="section-intro-p animate-on-scroll fade-in-up">O sucesso deles é o nosso maior orgulho.</p>
+                <div class="depoimentos-grid">
+                    <div class="depoimento-card animate-on-scroll fade-in-up" data-delay="0">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <p>"A Mendev transformou nossa presença online. Saímos da invisibilidade para a primeira página do Google em menos de 3 meses. As vendas aumentaram 40%!"</p>
+                        <div class="depoimento-autor">
+                            <h4>João Silva</h4>
+                            <span>CEO, Tech Solutions</span>
                         </div>
-                        <!-- Item 2: Velocidade -->
-                        <div class="reveal bg-gray-900 p-8 rounded-lg border border-purple-500/20 transition-all duration-300 hover:border-cyan-400 hover:-translate-y-2"
-                            style="transition-delay: 100ms;">
-                            <div class="text-cyan-400 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="mx-auto">
-                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 text-white">⚡ Velocidade da Luz</h3>
-                            <p class="text-gray-400">Um site lento afasta visitantes e é penalizado pelo Google. Otimizo
-                                cada elemento para garantir um carregamento quase instantâneo.</p>
-                        </div>
-                        <!-- Item 3: Design Responsivo -->
-                        <div class="reveal bg-gray-900 p-8 rounded-lg border border-purple-500/20 transition-all duration-300 hover:border-cyan-400 hover:-translate-y-2"
-                            style="transition-delay: 200ms;">
-                            <div class="text-cyan-400 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="mx-auto">
-                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 text-white">📱 Design Responsivo para o Futuro</h3>
-                            <p class="text-gray-400">Seu site terá uma aparência impecável em qualquer dispositivo. O
-                                Google adora isso.</p>
-                        </div>
-                        <!-- Item 4: Palavras-chave -->
-                        <div class="reveal bg-gray-900 p-8 rounded-lg border border-purple-500/20 transition-all duration-300 hover:border-cyan-400 hover:-translate-y-2"
-                            style="transition-delay: 300ms;">
-                            <div class="text-cyan-400 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="mx-auto">
-                                    <path
-                                        d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48">
-                                    </path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 text-white">🔑 Pesquisa de Palavras-chave</h3>
-                            <p class="text-gray-400">Investigo o que seus clientes estão pesquisando para que você seja
-                                encontrado por quem realmente importa.</p>
-                        </div>
-                        <!-- Item 5: Análise -->
-                        <div class="reveal bg-gray-900 p-8 rounded-lg border border-purple-500/20 transition-all duration-300 hover:border-cyan-400 hover:-translate-y-2"
-                            style="transition-delay: 400ms;">
-                            <div class="text-cyan-400 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="mx-auto">
-                                    <path d="M12 20V10"></path>
-                                    <path d="M18 20V4"></path>
-                                    <path d="M6 20V16"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 text-white">📊 Análise e Melhoria Contínua</h3>
-                            <p class="text-gray-400">Forneço as ferramentas para você acompanhar seu desempenho e
-                                identificar oportunidades de crescimento.</p>
+                    </div>
+                    <div class="depoimento-card animate-on-scroll fade-in-up" data-delay="200">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <p>"O site não só ficou lindo, como também é uma máquina de gerar leads. O trabalho de SEO foi impecável e o suporte é nota 10. Recomendo fortemente."</p>
+                        <div class="depoimento-autor">
+                            <h4>Maria Oliveira</h4>
+                            <span>Diretora, Consultoria Eficaz</span>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- 4. Seção de Portfólio -->
-            <section id="portfolio" class="py-20 md:py-32">
-                <div class="container mx-auto px-6 text-center">
-                    <div class="reveal">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white">Projetos que Falam por Si.</h2>
-                    </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Projeto 1 -->
-                        <div class="reveal portfolio-item group relative rounded-lg overflow-hidden cursor-pointer"
-                            data-title="Projeto Neon"
-                            data-description="Um e-commerce de moda futurista com foco em performance e experiência de usuário mobile."
-                            data-result="Aumento de 200% no tráfego orgânico em 3 meses." data-link="#"
-                            data-image="https://placehold.co/800x600/0a0a1a/e0e0e0?text=Projeto+Neon">
-                            <img src="https://placehold.co/800x600/0a0a1a/e0e0e0?text=Projeto+Neon" alt="Projeto Neon"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-black/40 group-hover:bg-gradient-to-t from-purple-700/80 to-transparent transition-all duration-300">
-                            </div>
-                            <h3
-                                class="absolute bottom-4 left-4 text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                Projeto Neon</h3>
-                        </div>
-                        <!-- Projeto 2 -->
-                        <div class="reveal portfolio-item group relative rounded-lg overflow-hidden cursor-pointer"
-                            style="transition-delay: 100ms;" data-title="DataSphere Analytics"
-                            data-description="Dashboard de visualização de dados para uma startup de IA, com foco em carregamento rápido de grandes volumes de informação."
-                            data-result="Primeira página do Google para 'dashboard de análise de IA' em 6 meses."
-                            data-link="#" data-image="https://placehold.co/800x600/0a0a1a/e0e0e0?text=DataSphere">
-                            <img src="https://placehold.co/800x600/0a0a1a/e0e0e0?text=DataSphere"
-                                alt="Projeto DataSphere"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-black/40 group-hover:bg-gradient-to-t from-purple-700/80 to-transparent transition-all duration-300">
-                            </div>
-                            <h3
-                                class="absolute bottom-4 left-4 text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                DataSphere</h3>
-                        </div>
-                        <!-- Projeto 3 -->
-                        <div class="reveal portfolio-item group relative rounded-lg overflow-hidden cursor-pointer"
-                            style="transition-delay: 200ms;" data-title="CyberCorp Landing"
-                            data-description="Página de lançamento para uma empresa de cibersegurança, com SEO técnico para alta autoridade no setor."
-                            data-result="Redução de 80% na taxa de rejeição e aumento no tempo de permanência na página."
-                            data-link="#" data-image="https://placehold.co/800x600/0a0a1a/e0e0e0?text=CyberCorp">
-                            <img src="https://placehold.co/800x600/0a0a1a/e0e0e0?text=CyberCorp" alt="Projeto CyberCorp"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-black/40 group-hover:bg-gradient-to-t from-purple-700/80 to-transparent transition-all duration-300">
-                            </div>
-                            <h3
-                                class="absolute bottom-4 left-4 text-white text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                CyberCorp</h3>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. Seção "O Processo" -->
-            <section id="processo" class="py-20 md:py-32 bg-gray-900/50">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-16 reveal">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white">Da Ideia ao Lançamento: Uma Jornada
-                            Transparente.</h2>
-                    </div>
-                    <!-- Timeline -->
-                    <div class="relative max-w-4xl mx-auto">
-                        <!-- Linha central -->
-                        <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-purple-500/30"></div>
-
-                        <!-- Item 1 -->
-                        <div class="relative mb-12 reveal">
-                            <div class="md:flex items-center">
-                                <div class="md:w-1/2 md:pr-8">
-                                    <div class="bg-gray-900 p-6 rounded-lg border border-purple-500/20 text-right">
-                                        <h3 class="text-xl font-bold text-cyan-400">1. Discovery (Imersão)</h3>
-                                        <p class="text-gray-400 mt-2">Primeiro, eu mergulho no seu negócio para entender
-                                            seus objetivos e seu público-alvo.</p>
-                                    </div>
-                                </div>
-                                <div class="md:w-1/2 md:pl-8"></div>
-                            </div>
-                            <div
-                                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#0a0a1a]">
-                            </div>
-                        </div>
-
-                        <!-- Item 2 -->
-                        <div class="relative mb-12 reveal">
-                            <div class="md:flex items-center flex-row-reverse">
-                                <div class="md:w-1/2 md:pl-8">
-                                    <div class="bg-gray-900 p-6 rounded-lg border border-purple-500/20 text-left">
-                                        <h3 class="text-xl font-bold text-cyan-400">2. Estratégia e Design</h3>
-                                        <p class="text-gray-400 mt-2">Crio um design futurista e funcional, já pensando
-                                            na otimização de SEO desde o primeiro esboço.</p>
-                                    </div>
-                                </div>
-                                <div class="md:w-1/2 md:pr-8"></div>
-                            </div>
-                            <div
-                                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#0a0a1a]">
-                            </div>
-                        </div>
-
-                        <!-- Item 3 -->
-                        <div class="relative mb-12 reveal">
-                            <div class="md:flex items-center">
-                                <div class="md:w-1/2 md:pr-8">
-                                    <div class="bg-gray-900 p-6 rounded-lg border border-purple-500/20 text-right">
-                                        <h3 class="text-xl font-bold text-cyan-400">3. Desenvolvimento e SEO Técnico
-                                        </h3>
-                                        <p class="text-gray-400 mt-2">É aqui que a mágica acontece. Eu construo seu site
-                                            com as melhores práticas de código e SEO.</p>
-                                    </div>
-                                </div>
-                                <div class="md:w-1/2 md:pl-8"></div>
-                            </div>
-                            <div
-                                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#0a0a1a]">
-                            </div>
-                        </div>
-
-                        <!-- Item 4 -->
-                        <div class="relative mb-12 reveal">
-                            <div class="md:flex items-center flex-row-reverse">
-                                <div class="md:w-1/2 md:pl-8">
-                                    <div class="bg-gray-900 p-6 rounded-lg border border-purple-500/20 text-left">
-                                        <h3 class="text-xl font-bold text-cyan-400">4. Lançamento e Análise</h3>
-                                        <p class="text-gray-400 mt-2">Seu site vai ao ar! E eu te mostro como acompanhar
-                                            os resultados e o crescimento do seu tráfego.</p>
-                                    </div>
-                                </div>
-                                <div class="md:w-1/2 md:pr-8"></div>
-                            </div>
-                            <div
-                                class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#0a0a1a]">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 6. Seção de Contato -->
-            <section id="contato" class="py-20 md:py-32">
-            <div class="container mx-auto px-6 text-center">
-                <div class="reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Pronto para construir o futuro da sua
-                        presença online?</h2>
-                    <p class="text-lg max-w-2xl mx-auto mb-10 text-gray-400">Vamos conversar sobre como um site
-                        moderno, rápido e otimizado para SEO pode transformar o seu negócio. Deixe seu contato e eu
-                        retornarei em breve.</p>
-                </div>
-                
-                <form action="https://formspree.io/f/mrbyopar" method="POST" class="max-w-xl mx-auto reveal">
-                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
-                        <input type="text" name="name" placeholder="Nome" required
-                            class="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition">
-                        
-                        <input type="email" name="email" placeholder="Email" required
-                            class="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition">
-                    </div>
-                    
-                    <textarea name="message" placeholder="Mensagem (detalhes do projeto, preferências)" rows="4"
-                        class="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition mb-4"></textarea>
-                    
-                    <button type="submit"
-                        class="w-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50">
-                        Enviar Mensagem
-                    </button>
+        <section id="contato" style="background-color: var(--fundo-card);">
+            <div class="container animate-on-scroll fade-in-up" style="max-width: 800px;">
+                <h2>Vamos Colocar seu Site no Topo do Google?</h2>
+                <p class="section-intro-p">Preencha o formulário abaixo com os detalhes do seu projeto e receba uma análise inicial sem compromisso.</p>
+                <form id="contactForm" action="https://formspree.io/f/mrbyopar" method="POST" class="form-contato">
+                    <input type="text" name="Nome_Completo" placeholder="Seu Nome Completo" required>
+                    <input type="text" name="Empresa_Completo" placeholder="Nome da Sua Empresa" required>
+                    <input type="email" name="Email_Contato" placeholder="E-mail para Contato" required>
+                    <textarea name="Mensagem_Detalhada" placeholder="Descreva seu projeto ou dúvida..." rows="6"></textarea>
+                    <button type="submit" class="btn-cta">Enviar e Iniciar Análise</button>
+                    <p class="form-message"></p>
                 </form>
             </div>
         </section>
-        </main>
+    </main>
 
-        <!-- Footer -->
-        <footer class="py-8 bg-gray-900/50">
-            <div class="container mx-auto px-6 text-center text-gray-500">
-                <p>&copy; 2025 MENDEV. Todos os direitos reservados.</p>
-                <p>Construindo o futuro da web.</p>
-            </div>
-        </footer>
-
-    </div>
-
-    <!-- Modal do Portfólio -->
-    <div id="portfolio-modal" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
-        <div id="modal-content"
-            class="bg-gray-900 w-full max-w-3xl max-h-[90vh] rounded-lg p-6 md:p-8 relative overflow-y-auto transform scale-95 opacity-0 transition-all duration-300">
-            <button id="modal-close" class="absolute top-4 right-4 text-gray-400 hover:text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <img id="modal-image" src="" alt="" class="w-full h-auto max-h-72 object-cover rounded-lg mb-6">
-            <h2 id="modal-title" class="text-3xl font-bold mb-4 text-white"></h2>
-            <p id="modal-description" class="text-lg text-gray-400 mb-4"></p>
-            <div class="bg-purple-900/50 border-l-4 border-cyan-400 p-4 rounded-r-lg mb-6">
-                <h4 class="font-semibold text-white">Resultado de SEO:</h4>
-                <p id="modal-result" class="text-cyan-300 italic"></p>
-            </div>
-            <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer"
-                class="inline-block bg-cyan-600 text-white font-bold py-2 px-6 rounded-full transition-colors hover:bg-cyan-500">
-                Ver Site Ao Vivo
+    <footer>
+        <div class="container">
+            <a href="#hero" class="logo-mendev" style="color: var(--texto-claro); margin-bottom: 1rem; justify-content: center;">
+                <span class="logo-icon">&lt;M</span> 
+                <span class="logo-text">Mendev</span>
             </a>
+            <p>Mendev - Desenvolvimento de Sites Otimizados para Crescimento Orgânico.</p>
+            <p>&copy; 2025 Mendev | <a href="#hero">Posicionamento no Google</a>. Todos os direitos reservados.</p>
         </div>
-    </div>
+    </footer>
 
-
-    <!-- particles.js CDN -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <a href="https://wa.me/5571992546082?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20Mendev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." 
+       id="whatsapp-flutuante" target="_blank" title="Fale conosco no WhatsApp" aria-label="Link para o WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener("DOMContentLoaded", function() {
 
-            // 1. Configuração do Particles.js
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                    "color": { "value": "#6f42c1" }, // roxo
-                    "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
-                    "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                    "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#8a2be2", "opacity": 0.2, "width": 1 },
-                    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-                    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } }
-                },
-                "retina_detect": true
+            // --- LÓGICA DO MENU HAMBURGER (MOBILE) ---
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
             });
 
-            // 2. Efeito de Digitação para o subtítulo
-            const subtitleText = "Desenvolvedor Front-End | Criando o Futuro da Web, Otimizado para o Presente.";
-            const subtitleElement = document.getElementById('hero-subtitle');
-            let i = 0;
-            function typeWriter() {
-                if (i < subtitleText.length) {
-                    subtitleElement.innerHTML += subtitleText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
-                }
-            }
-            // Inicia após uma pequena pausa
-            setTimeout(typeWriter, 1000);
+            // Fecha o menu ao clicar em um link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
 
-            // 3. Animações de Scroll com Intersection Observer
+            // --- LÓGICA DAS ANIMAÇÕES AO ROLAR A PÁGINA ---
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        const delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, delay);
+                        observer.unobserve(entry.target); // Opcional: para animar apenas uma vez
                     }
                 });
             }, {
-                threshold: 0.1
+                threshold: 0.1 // O elemento é considerado visível com 10% de sua área na tela
             });
 
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach(el => observer.observe(el));
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
 
-            // 4. Lógica do Modal do Portfólio
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-            const modal = document.getElementById('portfolio-modal');
-            const modalContent = document.getElementById('modal-content');
-            const modalClose = document.getElementById('modal-close');
+            // --- LÓGICA DE ENVIO DOS FORMULÁRIOS ---
 
-            const modalImage = document.getElementById('modal-image');
-            const modalTitle = document.getElementById('modal-title');
-            const modalDescription = document.getElementById('modal-description');
-            const modalResult = document.getElementById('modal-result');
-            const modalLink = document.getElementById('modal-link');
+            // Formulário do HERO
+            const heroForm = document.getElementById('heroForm');
+            heroForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(heroForm);
+                const formMessage = heroForm.querySelector('.form-message');
+                const submitButton = heroForm.querySelector('button[type="submit"]');
 
-            portfolioItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const data = item.dataset;
+                submitButton.disabled = true;
+                submitButton.textContent = 'Enviando...';
+                formMessage.textContent = '';
+                formMessage.className = 'form-message';
 
-                    modalImage.src = data.image;
-                    modalImage.alt = data.title;
-                    modalTitle.textContent = data.title;
-                    modalDescription.textContent = data.description;
-                    modalResult.textContent = data.result;
-                    modalLink.href = data.link;
+                // Enviar para Formspree
+                fetch("https://formspree.io/f/mrbyopar", {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Sucesso no envio
+                        formMessage.textContent = "Sucesso! Abrindo o WhatsApp para continuarmos...";
+                        formMessage.classList.add('success');
+                        heroForm.reset();
 
-                    modal.classList.remove('hidden');
-                    modal.classList.add('flex');
-
-                    // Pequeno delay para a animação de entrada
-                    setTimeout(() => {
-                        modalContent.classList.add('scale-100', 'opacity-100');
-                        modalContent.classList.remove('scale-95', 'opacity-0');
-                    }, 50);
-
-                    document.body.style.overflow = 'hidden'; // Impede o scroll do fundo
+                        // Abrir WhatsApp
+                        const nome = formData.get('Nome_Hero') || 'Cliente';
+                        const email = formData.get('Email_Hero');
+                        const numeroWhatsapp = '5571992546082';
+                        const mensagem = encodeURIComponent(`Olá, sou ${nome} e gostaria de solicitar meu diagnóstico de SEO gratuito. Meu e-mail é ${email}. Podemos conversar?`);
+                        const whatsappUrl = `https://wa.me/${numeroWhatsapp}?text=${mensagem}`;
+                        window.open(whatsappUrl, '_blank');
+                    } else {
+                        // Erro no envio
+                        throw new Error('Houve um problema no envio. Tente novamente.');
+                    }
+                })
+                .catch(error => {
+                    formMessage.textContent = error.message || "Erro no envio. Por favor, tente pelo WhatsApp.";
+                    formMessage.classList.add('error');
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'QUERO MEU DIAGNÓSTICO GRÁTIS';
                 });
             });
 
-            function closeModal() {
-                modalContent.classList.remove('scale-100', 'opacity-100');
-                modalContent.classList.add('scale-95', 'opacity-0');
+            // Formulário de CONTATO
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(contactForm);
+                const formMessage = contactForm.querySelector('.form-message');
+                const submitButton = contactForm.querySelector('button[type="submit"]');
 
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                    modal.classList.remove('flex');
-                    document.body.style.overflow = 'auto';
-                }, 300);
-            }
+                submitButton.disabled = true;
+                submitButton.textContent = 'Enviando...';
+                formMessage.textContent = '';
+                formMessage.className = 'form-message';
 
-            modalClose.addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        formMessage.textContent = "Obrigado pelo contato! Responderemos em breve.";
+                        formMessage.classList.add('success');
+                        contactForm.reset();
+                    } else {
+                        throw new Error('Houve um problema no envio. Tente novamente.');
+                    }
+                })
+                .catch(error => {
+                    formMessage.textContent = error.message || "Erro no envio. Por favor, tente mais tarde ou use o WhatsApp.";
+                    formMessage.classList.add('error');
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Enviar e Iniciar Análise';
+                });
             });
 
-            // 5. Prevenção de envio de formulário
-            const form = document.querySelector('form');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Mensagem enviada! (Isso é uma demonstração)');
-                form.reset();
-            });
         });
     </script>
 </body>
-
 </html>
