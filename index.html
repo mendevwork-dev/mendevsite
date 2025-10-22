@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mendev | Sites Otimizados para a Primeira Página do Google</title>
     
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -13,20 +15,22 @@
 
     <style>
         /* ======================================================================= */
-        /* === VARIÁVEIS DE COR E CONFIGURAÇÕES GLOBAIS === */
+        /* === PALETA DE CORES COM DESTAQUE EM AMARELO === */
         /* ======================================================================= */
         :root {
-            --primaria-fundo: #1A004B; /* Azul Cobalto Profundo */
-            --secundaria-fundo: #000040; /* Azul Escuro Intenso */
-            --texto-principal: #333333;
-            --texto-claro: #f4f4f4;
-            --cta-primaria: #FFE600; /* Amarelo Elétrico */
-            --cta-hover: #FFD700;
-            --cta-secundaria: #00FFFF; /* Ciano Elétrico */
-            --fundo-card: #ffffff;
-            --fundo-alternativo: #f7f9fc;
-            --sombra-card: rgba(0, 0, 0, 0.1);
-            --sombra-cta: rgba(255, 230, 0, 0.5);
+            --fundo-principal: #0D1117;
+            --fundo-secundario: #161B22;
+            --fundo-card: rgba(22, 27, 34, 0.6);
+            --borda-card: rgba(139, 148, 158, 0.2);
+            --texto-principal: #E6EDF3;
+            --texto-secundario: #8B949E;
+            
+            /* --- CORES ALTERADAS PARA AMARELO --- */
+            --cta-primaria: #FFC700; /* Amarelo ouro vibrante */
+            --cta-hover: #FFDE59;   /* Amarelo mais claro para hover */
+            --destaque: #C9D1D9;
+            --sombra-suave: rgba(13, 17, 23, 0.5);
+            --glow-cta: rgba(255, 199, 0, 0.4); /* Brilho amarelado */
         }
 
         /* Reset e Base */
@@ -42,9 +46,10 @@
         }
 
         body {
-            background: var(--fundo-card);
-            color: var(--texto-principal);
-            line-height: 1.6;
+            background-color: var(--fundo-principal);
+            color: var(--texto-secundario);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
         .container {
@@ -58,13 +63,16 @@
         /* === HEADER E NAVEGAÇÃO === */
         /* ======================================================================= */
         header {
-            background: linear-gradient(90deg, var(--primaria-fundo) 0%, var(--secundaria-fundo) 100%);
+            background-color: rgba(13, 17, 23, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: sticky;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--borda-card);
             padding: 1rem 0;
+            transition: background-color 0.3s ease;
         }
 
         nav {
@@ -74,19 +82,19 @@
         }
 
         .logo-mendev {
-            display: flex; 
+            display: flex;
             align-items: center;
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--texto-claro);
+            color: var(--texto-principal);
             text-decoration: none;
-            gap: 0.5rem; 
+            gap: 0.5rem;
         }
 
         .logo-icon {
-            color: var(--cta-secundaria); 
+            color: var(--cta-primaria); /* Alterado para a cor principal */
             font-size: 2.2rem;
-            line-height: 1; 
+            line-height: 1;
         }
 
         .nav-menu {
@@ -98,7 +106,7 @@
 
         .nav-link {
             text-decoration: none;
-            color: var(--texto-claro);
+            color: var(--destaque);
             font-weight: 600;
             transition: color 0.3s ease;
             position: relative;
@@ -108,7 +116,8 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
             background-color: var(--cta-primaria);
@@ -123,17 +132,17 @@
 
         .btn-header-cta {
             background: var(--cta-primaria);
-            color: var(--primaria-fundo); 
+            color: var(--fundo-principal);
             padding: 0.7rem 1.5rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 700;
             transition: all 0.3s ease;
             text-decoration: none;
         }
         .btn-header-cta:hover {
             background: var(--cta-hover);
-            color: var(--primaria-fundo);
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--glow-cta);
         }
 
         .hamburger {
@@ -148,7 +157,8 @@
             height: 3px;
             margin: 5px auto;
             transition: all 0.3s ease-in-out;
-            background-color: var(--texto-claro);
+            background-color: var(--texto-principal);
+            border-radius: 2px;
         }
 
         /* ======================================================================= */
@@ -156,86 +166,90 @@
         /* ======================================================================= */
         .btn-cta {
             display: inline-block;
-            background: var(--cta-primaria); 
-            color: var(--primaria-fundo); 
-            padding: 0.9rem 2.2rem;
+            background: var(--cta-primaria);
+            color: var(--fundo-principal);
+            padding: 1rem 2.5rem;
             border-radius: 8px;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px var(--sombra-cta); 
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px var(--glow-cta);
             border: none;
             cursor: pointer;
         }
         .btn-cta:hover {
             background: var(--cta-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px var(--sombra-cta);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px var(--glow-cta);
         }
 
         section {
             padding: 6rem 0;
             text-align: center;
-            overflow: hidden; /* Garante que as animações não causem overflow */
+            position: relative;
+            overflow: hidden;
         }
 
         h1 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem); /* Fonte responsiva */
-            margin-bottom: 1rem;
-            color: var(--texto-claro);
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--texto-principal);
             font-weight: 800;
             text-align: left;
-            line-height: 1.2;
+            line-height: 1.1;
+            text-shadow: 0 0 20px var(--sombra-suave);
         }
         #hero h1 span {
-            color: var(--cta-primaria); 
+            color: var(--cta-primaria);
         }
 
         h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem); /* Fonte responsiva */
-            margin-bottom: 2.5rem;
-            color: var(--primaria-fundo); 
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1.5rem;
+            color: var(--texto-principal);
             font-weight: 700;
-            position: relative;
         }
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--cta-primaria); 
-            border-radius: 4px;
-        }
-
+        
         .section-intro-p {
             max-width: 800px;
-            margin: 0 auto 1.5rem auto;
-            font-size: 1.1rem;
-            color: #555;
+            margin: 0 auto 3rem auto;
+            font-size: 1.15rem;
+            color: var(--texto-secundario);
         }
 
         /* ======================================================================= */
-        /* === SEÇÃO HERO === */
+        /* === SEÇÃO HERO COM FUNDO AURORA === */
         /* ======================================================================= */
         #hero {
-            min-height: 90vh;
+            min-height: 95vh;
             padding: 5rem 0 3rem 0;
-            background: linear-gradient(135deg, var(--primaria-fundo) 0%, var(--secundaria-fundo) 100%);
-            color: var(--texto-claro);
+            background-color: var(--fundo-principal);
+            color: var(--texto-principal);
             display: flex;
             align-items: center;
         }
-
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(255, 199, 0, 0.15) 0%, transparent 40%), /* Ponto de luz amarelado */
+                radial-gradient(circle at 85% 70%, rgba(255, 88, 88, 0.1) 0%, transparent 40%); /* Ponto de luz avermelhado/laranja */
+            z-index: 0;
+            filter: blur(80px);
+        }
         .hero-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 4rem;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-text {
@@ -243,8 +257,8 @@
             max-width: 60%;
         }
         .hero-text p {
-            color: rgba(255, 255, 255, 0.85);
-            margin: 0 0 2rem 0;
+            color: var(--texto-secundario);
+            margin: 0 0 2.5rem 0;
             max-width: 100%;
             font-size: 1.2rem;
             text-align: left;
@@ -252,14 +266,17 @@
 
         .hero-form-wrapper {
             background: var(--fundo-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--borda-card);
+            box-shadow: 0 10px 40px var(--sombra-suave);
             width: 400px;
             flex-shrink: 0;
         }
         .hero-form-wrapper h3 {
-            color: var(--primaria-fundo);
+            color: var(--texto-principal);
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             text-align: center;
@@ -272,15 +289,19 @@
             width: 100%;
             padding: 1rem;
             margin-bottom: 1rem;
-            border: 1px solid #ccc;
+            border: 1px solid var(--borda-card);
             border-radius: 8px;
             font-size: 1rem;
-            background-color: #f9f9f9;
+            background-color: #0D1117;
+            color: var(--texto-principal);
             transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-contato input::placeholder, .form-contato textarea::placeholder {
+            color: var(--texto-secundario);
         }
         .form-contato input:focus, .form-contato textarea:focus {
             border-color: var(--cta-primaria);
-            box-shadow: 0 0 0 3px rgba(255, 230, 0, 0.3);
+            box-shadow: 0 0 0 3px var(--glow-cta);
             outline: none;
         }
         .form-contato button {
@@ -290,22 +311,27 @@
         .form-message {
             margin-top: 1rem;
             font-weight: 600;
+            min-height: 1.2em;
         }
         .form-message.success { color: #28a745; }
         .form-message.error { color: #dc3545; }
 
 
         /* ======================================================================= */
-        /* === SEÇÃO PROBLEMA, MODELOS E DIFERENCIAIS === */
+        /* === SEÇÕES COMUNS E CARDS === */
         /* ======================================================================= */
-        #problema, #diferenciais {
-            background-color: var(--fundo-alternativo);
+        #problema, #diferenciais, #depoimentos {
+            background-color: var(--fundo-secundario);
+            border-top: 1px solid var(--borda-card);
+            border-bottom: 1px solid var(--borda-card);
+        }
+        #modelos, #contato {
+            background-color: var(--fundo-principal);
         }
 
-        .modelos-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .modelos-grid, .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
             margin-top: 3rem;
         }
@@ -313,18 +339,17 @@
         .modelo-card {
             background: var(--fundo-card);
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            width: 350px;
+            border: 1px solid var(--borda-card);
+            box-shadow: 0 8px 30px var(--sombra-suave);
             text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 5px solid var(--cta-secundaria); 
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
         .modelo-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px var(--sombra-suave);
         }
         .modelo-card .card-content {
             padding: 1.5rem;
@@ -332,35 +357,33 @@
             display: flex;
             flex-direction: column;
         }
-        .modelo-card .card-content p {
-            flex-grow: 1;
-            max-width: 100%;
-            margin: 0;
-        }
         .modelo-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             transition: transform 0.4s ease-in-out;
+            opacity: 0.8;
         }
         .modelo-card:hover img {
             transform: scale(1.05);
+            opacity: 1;
         }
         .modelo-card h3 {
-            color: var(--primaria-fundo);
+            color: var(--texto-principal);
             font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.7rem;
         }
 
         .tag {
             display: inline-block;
-            background: var(--cta-secundaria); 
-            color: var(--primaria-fundo); 
-            padding: 0.3rem 0.8rem;
+            background: rgba(255, 199, 0, 0.1);
+            color: var(--cta-primaria);
+            padding: 0.4rem 1rem;
             border-radius: 20px;
+            border: 1px solid rgba(255, 199, 0, 0.3);
             font-size: 0.8rem;
             font-weight: 600;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             align-self: flex-start;
         }
 
@@ -370,52 +393,36 @@
             gap: 2rem;
             margin-top: 3rem;
         }
-
         .beneficio-item {
-            background: var(--fundo-card);
+            background: transparent;
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--borda-card);
+            transition: background-color 0.3s, transform 0.3s;
         }
         .beneficio-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            background-color: var(--fundo-card);
+            transform: translateY(-5px);
         }
         .beneficio-item i {
             font-size: 2.5rem;
-            color: var(--cta-primaria); 
-            margin-bottom: 1rem;
-            background: rgba(255, 230, 0, 0.1); 
-            padding: 15px;
-            border-radius: 50%;
-            display: inline-block;
+            color: var(--cta-primaria);
+            margin-bottom: 1.5rem;
         }
         .beneficio-item h3 {
-            font-size: 1.2rem;
-            color: var(--primaria-fundo);
-            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            color: var(--texto-principal);
+            margin-bottom: 0.7rem;
         }
 
-        /* ======================================================================= */
-        /* === NOVA SEÇÃO: DEPOIMENTOS === */
-        /* ======================================================================= */
-        #depoimentos {
-            background-color: var(--fundo-card);
-        }
-        .depoimentos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
+        /* Depoimentos */
         .depoimento-card {
-            background-color: var(--fundo-alternativo);
+            background-color: transparent;
             padding: 2rem;
             border-radius: 12px;
-            border-left: 5px solid var(--cta-primaria);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--borda-card);
+            border-left: 4px solid var(--cta-primaria);
             text-align: left;
         }
         .depoimento-card i {
@@ -425,17 +432,16 @@
         }
         .depoimento-card p {
             font-style: italic;
-            color: #555;
+            color: var(--texto-secundario);
             margin-bottom: 1.5rem;
-            max-width: 100%;
         }
         .depoimento-autor {
             font-weight: 700;
-            color: var(--primaria-fundo);
+            color: var(--texto-principal);
         }
         .depoimento-autor span {
             font-weight: 400;
-            color: #777;
+            color: var(--texto-secundario);
             font-size: 0.9rem;
             display: block;
         }
@@ -444,27 +450,30 @@
         /* === RODAPÉ E BOTÃO FLUTUANTE === */
         /* ======================================================================= */
         footer {
-            background-color: var(--primaria-fundo); 
-            color: var(--texto-claro);
+            background-color: var(--fundo-principal);
+            color: var(--texto-secundario);
             padding: 3rem 0;
             text-align: center;
+            border-top: 1px solid var(--borda-card);
         }
         footer p {
-            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
-            max-width: 100%;
         }
         footer a {
-            color: var(--cta-primaria); 
+            color: var(--cta-primaria);
             text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
 
         #whatsapp-flutuante {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #25D366; 
+            background-color: #25D366;
             color: white;
             width: 60px;
             height: 60px;
@@ -472,13 +481,13 @@
             text-align: center;
             line-height: 60px;
             font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             z-index: 1000;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         #whatsapp-flutuante:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
         }
 
 
@@ -489,15 +498,9 @@
             opacity: 0;
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .fade-in-up {
-            transform: translateY(50px);
-        }
-        .fade-in-left {
-            transform: translateX(-50px);
-        }
-        .fade-in-right {
-            transform: translateX(50px);
-        }
+        .fade-in-up { transform: translateY(50px); }
+        .fade-in-left { transform: translateX(-50px); }
+        .fade-in-right { transform: translateX(50px); }
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translate(0, 0);
@@ -525,46 +528,28 @@
                 order: 1;
             }
         }
-         
+        
         @media (max-width: 768px) {
             .nav-menu {
                 position: fixed;
                 left: -100%;
-                top: 70px; /* Altura do header */
+                top: 73px; /* Altura do header */
                 flex-direction: column;
-                background-color: var(--primaria-fundo);
+                background-color: var(--fundo-principal);
                 width: 100%;
-                height: 100vh;
+                height: calc(100vh - 73px);
                 text-align: center;
-                transition: 0.3s;
+                transition: 0.4s ease-in-out;
                 gap: 2rem;
-                padding-top: 2rem;
+                padding-top: 3rem;
             }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-link {
-                font-size: 1.2rem;
-            }
-            .btn-header-cta {
-                padding: 1rem 2rem;
-                font-size: 1.1rem;
-            }
-
-            .hamburger {
-                display: block;
-            }
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
+            .nav-menu.active { left: 0; }
+            .nav-link { font-size: 1.3rem; }
+            .btn-header-cta { padding: 1rem 2rem; font-size: 1.1rem; }
+            .hamburger { display: block; z-index: 1001; }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
     </style>
 </head>
@@ -574,7 +559,7 @@
         <div class="container">
             <nav>
                 <a href="#hero" class="logo-mendev">
-                    <span class="logo-icon">&lt;M</span> 
+                    <span class="logo-icon">&lt;M</span>
                     <span class="logo-text">Mendev</span>
                 </a>
                 <ul class="nav-menu" id="nav-menu">
@@ -628,15 +613,15 @@
                 <p class="section-intro-p animate-on-scroll fade-in-up">Cada projeto é construído com uma base sólida de SEO para atrair e converter visitantes do Google.</p>
                 <div class="modelos-grid">
                     <div class="modelo-card animate-on-scroll fade-in-up" data-delay="0">
-                        <img src="https://images.unsplash.com/photo-1559028006-44d5a2b72bf9?q=80&w=2070&auto=format&fit=crop" alt="Site Institucional com Foco em SEO">
+                        <img src="site-receptivo.png" alt="Site Institucional com Foco em SEO">
                         <div class="card-content">
                             <h3>Sites Institucionais</h3>
-                            <p>Fortaleça sua autoridade online e apareça nas buscas locais. Ideal para empresas que buscam credibilidade e clientes qualificados.</p>
+                            <p>Fortaleça sua autoridade online e apareça nas buscas locais. Ideal para empresas de que buscam credibilidade e clientes qualificados.</p>
                             <span class="tag">SEO Local</span>
                         </div>
                     </div>
                     <div class="modelo-card animate-on-scroll fade-in-up" data-delay="200">
-                        <img src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=2070&auto=format&fit=crop" alt="Loja Virtual Otimizada para SEO">
+                        <img src="loja-virtual.png" alt="Loja Virtual Otimizada para SEO">
                         <div class="card-content">
                             <h3>Lojas Virtuais (E-commerce)</h3>
                             <p>Plataformas de e-commerce otimizadas para que seus produtos sejam encontrados no Google Shopping e na busca orgânica.</p>
@@ -644,7 +629,7 @@
                         </div>
                     </div>
                     <div class="modelo-card animate-on-scroll fade-in-up" data-delay="400">
-                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop" alt="Landing Page de Alta Conversão Orgânica">
+                        <img src="landing-page.png" alt="Landing Page de Alta Conversão Orgânica">
                         <div class="card-content">
                             <h3>Landing Pages de Vendas</h3>
                             <p>Páginas de alta performance com SEO focado em palavras-chave específicas para capturar leads de forma orgânica e contínua.</p>
@@ -681,6 +666,7 @@
                         <h3>Segurança e Confiabilidade</h3>
                         <p>Garantia de código limpo, seguro e suporte para atualizações futuras e manutenção contínua do seu ativo digital.</p>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -692,10 +678,10 @@
                 <div class="depoimentos-grid">
                     <div class="depoimento-card animate-on-scroll fade-in-up" data-delay="0">
                         <i class="fa-solid fa-quote-left"></i>
-                        <p>"A Mendev transformou nossa presença online. Saímos da invisibilidade para a primeira página do Google em menos de 3 meses. As vendas aumentaram 40%!"</p>
+                        <p>"A Mendev transformou nossa presença online. Saímos da invisibilidade para a primeira página do Google em menos de 5 meses. As vendas aumentaram 40%!"</p>
                         <div class="depoimento-autor">
                             <h4>João Silva</h4>
-                            <span>CEO, Tech Solutions</span>
+                            <span>CEO, Tech Slc</span>
                         </div>
                     </div>
                     <div class="depoimento-card animate-on-scroll fade-in-up" data-delay="200">
@@ -703,14 +689,14 @@
                         <p>"O site não só ficou lindo, como também é uma máquina de gerar leads. O trabalho de SEO foi impecável e o suporte é nota 10. Recomendo fortemente."</p>
                         <div class="depoimento-autor">
                             <h4>Maria Oliveira</h4>
-                            <span>Diretora, Consultoria Eficaz</span>
+                            <span>Diretora, Consultoria</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contato" style="background-color: var(--fundo-card);">
+        <section id="contato">
             <div class="container animate-on-scroll fade-in-up" style="max-width: 800px;">
                 <h2>Vamos Colocar seu Site no Topo do Google?</h2>
                 <p class="section-intro-p">Preencha o formulário abaixo com os detalhes do seu projeto e receba uma análise inicial sem compromisso.</p>
@@ -728,12 +714,12 @@
 
     <footer>
         <div class="container">
-            <a href="#hero" class="logo-mendev" style="color: var(--texto-claro); margin-bottom: 1rem; justify-content: center;">
-                <span class="logo-icon">&lt;M</span> 
+            <a href="#hero" class="logo-mendev" style="margin-bottom: 1rem; justify-content: center;">
+                <span class="logo-icon">&lt;M</span>
                 <span class="logo-text">Mendev</span>
             </a>
             <p>Mendev - Desenvolvimento de Sites Otimizados para Crescimento Orgânico.</p>
-            <p>&copy; 2025 Mendev | <a href="#hero">Posicionamento no Google</a>. Todos os direitos reservados.</p>
+            <p>&copy; 2020 Mendev | <a href="#hero">Posicionamento no Google</a>. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -748,7 +734,7 @@
             // --- LÓGICA DO MENU HAMBURGER (MOBILE) ---
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinks = navMenu.querySelectorAll('a');
 
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
@@ -772,11 +758,11 @@
                         setTimeout(() => {
                             entry.target.classList.add('visible');
                         }, delay);
-                        observer.unobserve(entry.target); // Opcional: para animar apenas uma vez
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1 // O elemento é considerado visível com 10% de sua área na tela
+                threshold: 0.1
             });
 
             animatedElements.forEach(el => {
@@ -784,91 +770,60 @@
             });
 
             // --- LÓGICA DE ENVIO DOS FORMULÁRIOS ---
+            function handleFormSubmit(formId, formspreeUrl) {
+                const form = document.getElementById(formId);
+                if (!form) return;
+                
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const formData = new FormData(form);
+                    const formMessage = form.querySelector('.form-message');
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.textContent;
 
-            // Formulário do HERO
-            const heroForm = document.getElementById('heroForm');
-            heroForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(heroForm);
-                const formMessage = heroForm.querySelector('.form-message');
-                const submitButton = heroForm.querySelector('button[type="submit"]');
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Enviando...';
+                    formMessage.textContent = '';
+                    formMessage.className = 'form-message';
 
-                submitButton.disabled = true;
-                submitButton.textContent = 'Enviando...';
-                formMessage.textContent = '';
-                formMessage.className = 'form-message';
-
-                // Enviar para Formspree
-                fetch("https://formspree.io/f/mrbyopar", {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Sucesso no envio
-                        formMessage.textContent = "Sucesso! Abrindo o WhatsApp para continuarmos...";
-                        formMessage.classList.add('success');
-                        heroForm.reset();
-
-                        // Abrir WhatsApp
-                        const nome = formData.get('Nome_Hero') || 'Cliente';
-                        const email = formData.get('Email_Hero');
-                        const numeroWhatsapp = '5571992546082';
-                        const mensagem = encodeURIComponent(`Olá, sou ${nome} e gostaria de solicitar meu diagnóstico de SEO gratuito. Meu e-mail é ${email}. Podemos conversar?`);
-                        const whatsappUrl = `https://wa.me/${numeroWhatsapp}?text=${mensagem}`;
-                        window.open(whatsappUrl, '_blank');
-                    } else {
-                        // Erro no envio
-                        throw new Error('Houve um problema no envio. Tente novamente.');
-                    }
-                })
-                .catch(error => {
-                    formMessage.textContent = error.message || "Erro no envio. Por favor, tente pelo WhatsApp.";
-                    formMessage.classList.add('error');
-                })
-                .finally(() => {
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'QUERO MEU DIAGNÓSTICO GRÁTIS';
+                    fetch(formspreeUrl, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            formMessage.textContent = "Sucesso! Entraremos em contato em breve.";
+                            formMessage.classList.add('success');
+                            form.reset();
+                            
+                            // Redirecionamento para WhatsApp apenas no formulário do Hero
+                            if (formId === 'heroForm') {
+                                formMessage.textContent = "Sucesso! Abrindo o WhatsApp para continuarmos...";
+                                const nome = formData.get('Nome_Hero') || 'Cliente';
+                                const email = formData.get('Email_Hero');
+                                const numeroWhatsapp = '5571992546082';
+                                const mensagem = encodeURIComponent(`Olá, sou ${nome} e gostaria de solicitar meu diagnóstico de SEO gratuito. Meu e-mail é ${email}. Podemos conversar?`);
+                                const whatsappUrl = `https://wa.me/${numeroWhatsapp}?text=${mensagem}`;
+                                window.open(whatsappUrl, '_blank');
+                            }
+                        } else {
+                            throw new Error('Houve um problema no envio. Tente novamente.');
+                        }
+                    })
+                    .catch(error => {
+                        formMessage.textContent = error.message || "Erro no envio. Por favor, tente pelo WhatsApp.";
+                        formMessage.classList.add('error');
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                    });
                 });
-            });
+            }
 
-            // Formulário de CONTATO
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(contactForm);
-                const formMessage = contactForm.querySelector('.form-message');
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-
-                submitButton.disabled = true;
-                submitButton.textContent = 'Enviando...';
-                formMessage.textContent = '';
-                formMessage.className = 'form-message';
-
-                fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        formMessage.textContent = "Obrigado pelo contato! Responderemos em breve.";
-                        formMessage.classList.add('success');
-                        contactForm.reset();
-                    } else {
-                        throw new Error('Houve um problema no envio. Tente novamente.');
-                    }
-                })
-                .catch(error => {
-                    formMessage.textContent = error.message || "Erro no envio. Por favor, tente mais tarde ou use o WhatsApp.";
-                    formMessage.classList.add('error');
-                })
-                .finally(() => {
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Enviar e Iniciar Análise';
-                });
-            });
+            handleFormSubmit('heroForm', 'https://formspree.io/f/mrbyopar');
+            handleFormSubmit('contactForm', 'https://formspree.io/f/mrbyopar');
 
         });
     </script>
